@@ -1,0 +1,15 @@
+{
+  "name": "berlin-bus-map",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Interactive map of Berlin public transport (BVG and Umland buses, trams, U-Bahn, S-Bahn) — VBB GTFS + OSM + HMM map matching",
+  "scripts": {
+    "download": "bash pipeline/download.sh",
+    "build": "node --max-old-space-size=12288 pipeline/build.mjs --all --tram all",
+    "lines": "node --max-old-space-size=10240 pipeline/lines.mjs",
+    "report": "node pipeline/report-gaps.mjs",
+    "audit": "node --max-old-space-size=8192 pipeline/audit.mjs",
+    "serve": "node pipeline/serve.mjs 8162"
+  }
+}

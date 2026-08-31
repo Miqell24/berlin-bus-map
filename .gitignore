@@ -1,0 +1,7 @@
+node_modules/
+data/gtfs/
+data/gtfs-rail/
+data/osm/
+data/*.zip
+data/*.pbf
+data/out/
