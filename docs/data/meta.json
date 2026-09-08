@@ -13653,2638 +13653,6 @@
       ]
     },
     {
-      "line": "N1",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S+U Zoologischer Garten Bhf",
-          "variants": 3,
-          "tripCount": 12,
-          "stops": 21,
-          "lengthKm": 10.38,
-          "stats": {
-            "observations": 439,
-            "matched": 439,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.168972345430702,
-            "roundaboutSegs": 15,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Helsingforser Platz",
-          "variants": 3,
-          "tripCount": 2,
-          "stops": 23,
-          "lengthKm": 10.58,
-          "stats": {
-            "observations": 483,
-            "matched": 483,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.804185045825012,
-            "roundaboutSegs": 10,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N2",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Hadlichstr.",
-          "variants": 7,
-          "tripCount": 6,
-          "stops": 48,
-          "lengthKm": 21.45,
-          "stats": {
-            "observations": 990,
-            "matched": 990,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.4320064188924424,
-            "roundaboutSegs": 41,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Ruhleben",
-          "variants": 6,
-          "tripCount": 6,
-          "stops": 46,
-          "lengthKm": 21.16,
-          "stats": {
-            "observations": 954,
-            "matched": 954,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.411955513295127,
-            "roundaboutSegs": 39,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N3",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Mexikoplatz",
-          "variants": 2,
-          "tripCount": 7,
-          "stops": 32,
-          "lengthKm": 15.18,
-          "stats": {
-            "observations": 700,
-            "matched": 700,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.4195407604098595,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Wittenbergplatz",
-          "variants": 3,
-          "tripCount": 7,
-          "stops": 31,
-          "lengthKm": 15.47,
-          "stats": {
-            "observations": 670,
-            "matched": 670,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.1030214380893857,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N5",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Riesaer Str.",
-          "variants": 10,
-          "tripCount": 4,
-          "stops": 47,
-          "lengthKm": 24.88,
-          "stats": {
-            "observations": 1016,
-            "matched": 1016,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.745358599653342,
-            "roundaboutSegs": 9,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Seydlitzstr.",
-          "variants": 9,
-          "tripCount": 4,
-          "stops": 50,
-          "lengthKm": 25.06,
-          "stats": {
-            "observations": 1059,
-            "matched": 1059,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.232136173527679,
-            "roundaboutSegs": 10,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N6",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "U Alt-Mariendorf",
-          "variants": 7,
-          "tripCount": 5,
-          "stops": 48,
-          "lengthKm": 21.45,
-          "stats": {
-            "observations": 933,
-            "matched": 933,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.6263717731093608,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "An der Mühle",
-          "variants": 8,
-          "tripCount": 5,
-          "stops": 48,
-          "lengthKm": 22.58,
-          "stats": {
-            "observations": 934,
-            "matched": 934,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.8102652545616773,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N7",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Flughafen BER",
-          "variants": 13,
-          "tripCount": 4,
-          "stops": 85,
-          "lengthKm": 43.9,
-          "stats": {
-            "observations": 1907,
-            "matched": 1907,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.9216549133262784,
-            "roundaboutSegs": 15,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Galenstr.",
-          "variants": 9,
-          "tripCount": 8,
-          "stops": 84,
-          "lengthKm": 44.14,
-          "stats": {
-            "observations": 1891,
-            "matched": 1891,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.0846927435045646,
-            "roundaboutSegs": 35,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N7X",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "Flughafen BER",
-          "headsign": "Flughafen BER",
-          "variants": 1,
-          "tripCount": 14,
-          "stops": 20,
-          "lengthKm": 28.7,
-          "stats": {
-            "observations": 1014,
-            "matched": 1014,
-            "noCandidates": 0,
-            "viterbiBreaks": 2,
-            "bridged": 0,
-            "rawStretchCount": 2,
-            "rawMeters": 37,
-            "meanError": 3.820258518569601,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N8",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S+U Hermannstr.",
-          "variants": 7,
-          "tripCount": 5,
-          "stops": 53,
-          "lengthKm": 22.57,
-          "stats": {
-            "observations": 999,
-            "matched": 999,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.8482205877215914,
-            "roundaboutSegs": 40,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Wilhelmsruher Damm",
-          "variants": 10,
-          "tripCount": 4,
-          "stops": 53,
-          "lengthKm": 22.63,
-          "stats": {
-            "observations": 1020,
-            "matched": 1020,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.112881812924874,
-            "roundaboutSegs": 21,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N9",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S+U Rathaus Steglitz",
-          "variants": 3,
-          "tripCount": 10,
-          "stops": 27,
-          "lengthKm": 13.48,
-          "stats": {
-            "observations": 656,
-            "matched": 656,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.289997201644831,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Osloer Str.",
-          "variants": 3,
-          "tripCount": 12,
-          "stops": 26,
-          "lengthKm": 13.27,
-          "stats": {
-            "observations": 663,
-            "matched": 663,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.096394028287031,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N10",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Sachtlebenstr.",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 44,
-          "lengthKm": 15.46,
-          "stats": {
-            "observations": 641,
-            "matched": 641,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.159743299985262,
-            "roundaboutSegs": 7,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Hertzallee",
-          "variants": 4,
-          "tripCount": 20,
-          "stops": 43,
-          "lengthKm": 15.43,
-          "stats": {
-            "observations": 628,
-            "matched": 628,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.329087064520077,
-            "roundaboutSegs": 7,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N12",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "Stahnsdorf, Waldschänke",
-          "headsign": "Stahnsdorf, Waldschänke",
-          "variants": 2,
-          "tripCount": 2,
-          "stops": 35,
-          "lengthKm": 15.61,
-          "stats": {
-            "observations": 647,
-            "matched": 647,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 4.531083435247376,
-            "roundaboutSegs": 49,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "Zehlendorf Eiche",
-          "headsign": "Zehlendorf Eiche",
-          "variants": 2,
-          "tripCount": 10,
-          "stops": 57,
-          "lengthKm": 25.34,
-          "stats": {
-            "observations": 991,
-            "matched": 991,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 4.318474628316978,
-            "roundaboutSegs": 49,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N13",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Teltow Stadt",
-          "variants": 3,
-          "tripCount": 6,
-          "stops": 39,
-          "lengthKm": 19.9,
-          "stats": {
-            "observations": 951,
-            "matched": 951,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.18376707952732338,
-            "roundaboutSegs": 67,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Potsdam Hbf",
-          "variants": 2,
-          "tripCount": 10,
-          "stops": 39,
-          "lengthKm": 19.83,
-          "stats": {
-            "observations": 924,
-            "matched": 924,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.33596531349188624,
-            "roundaboutSegs": 87,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N14",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Potsdam, Johannes-Kepler-Platz",
-          "variants": 6,
-          "tripCount": 11,
-          "stops": 59,
-          "lengthKm": 26.13,
-          "stats": {
-            "observations": 1307,
-            "matched": 1307,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.147635510788995,
-            "roundaboutSegs": 28,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Potsdam, Science Park/Universität",
-          "variants": 7,
-          "tripCount": 6,
-          "stops": 58,
-          "lengthKm": 26.3,
-          "stats": {
-            "observations": 1313,
-            "matched": 1313,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.1867172203929232,
-            "roundaboutSegs": 18,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N15",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Potsdam Hauptbahnhof",
-          "variants": 3,
-          "tripCount": 5,
-          "stops": 23,
-          "lengthKm": 12.85,
-          "stats": {
-            "observations": 590,
-            "matched": 590,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.35170594758699986,
-            "roundaboutSegs": 19,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Potsdam, Birkenweg",
-          "variants": 3,
-          "tripCount": 10,
-          "stops": 25,
-          "lengthKm": 15.01,
-          "stats": {
-            "observations": 725,
-            "matched": 725,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.11195954607489184,
-            "roundaboutSegs": 9,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N16",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Potsdam Hauptbahnhof",
-          "variants": 5,
-          "tripCount": 9,
-          "stops": 29,
-          "lengthKm": 12.39,
-          "stats": {
-            "observations": 598,
-            "matched": 598,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.44021710597588287,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Nikolassee",
-          "variants": 3,
-          "tripCount": 16,
-          "stops": 26,
-          "lengthKm": 12.47,
-          "stats": {
-            "observations": 597,
-            "matched": 597,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.6871352360956533,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N17",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Potsdam, Johannes-Kepler-Platz",
-          "variants": 18,
-          "tripCount": 2,
-          "stops": 51,
-          "lengthKm": 22.49,
-          "stats": {
-            "observations": 1144,
-            "matched": 1144,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.13053843005687454,
-            "roundaboutSegs": 8,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Potsdam, Institut für Agrartechnik",
-          "variants": 9,
-          "tripCount": 5,
-          "stops": 50,
-          "lengthKm": 22.13,
-          "stats": {
-            "observations": 1123,
-            "matched": 1123,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.11323752239808409,
-            "roundaboutSegs": 4,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N18",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Nikolassee",
-          "variants": 2,
-          "tripCount": 24,
-          "stops": 13,
-          "lengthKm": 5.94,
-          "stats": {
-            "observations": 192,
-            "matched": 192,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.469371524353659,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Zehlendorf Eiche",
-          "variants": 2,
-          "tripCount": 24,
-          "stops": 13,
-          "lengthKm": 5.24,
-          "stats": {
-            "observations": 183,
-            "matched": 183,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.8270261587662409,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N20",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Seydlitzstr.",
-          "variants": 5,
-          "tripCount": 9,
-          "stops": 49,
-          "lengthKm": 18.31,
-          "stats": {
-            "observations": 736,
-            "matched": 736,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.431860667665708,
-            "roundaboutSegs": 22,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Hainbuchenstr.",
-          "variants": 2,
-          "tripCount": 15,
-          "stops": 52,
-          "lengthKm": 18.75,
-          "stats": {
-            "observations": 767,
-            "matched": 767,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.7346839110241064,
-            "roundaboutSegs": 60,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N22",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Alt-Lübars",
-          "variants": 3,
-          "tripCount": 30,
-          "stops": 44,
-          "lengthKm": 17.97,
-          "stats": {
-            "observations": 787,
-            "matched": 787,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.246636824868802,
-            "roundaboutSegs": 4,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Tegelort",
-          "variants": 3,
-          "tripCount": 26,
-          "stops": 43,
-          "lengthKm": 17.91,
-          "stats": {
-            "observations": 795,
-            "matched": 795,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.1927400040766036,
-            "roundaboutSegs": 22,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N23",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "U Rohrdamm",
-          "variants": 1,
-          "tripCount": 42,
-          "stops": 9,
-          "lengthKm": 2.5,
-          "stats": {
-            "observations": 125,
-            "matched": 125,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.681004311541056,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Mäckeritzwiesen",
-          "variants": 1,
-          "tripCount": 38,
-          "stops": 9,
-          "lengthKm": 2.54,
-          "stats": {
-            "observations": 97,
-            "matched": 97,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.588773115775347,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N24",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Heiligensee",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 35,
-          "lengthKm": 13.97,
-          "stats": {
-            "observations": 635,
-            "matched": 635,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.5455866618310563,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Wilhelmsruher Damm",
-          "variants": 3,
-          "tripCount": 26,
-          "stops": 34,
-          "lengthKm": 14.1,
-          "stats": {
-            "observations": 668,
-            "matched": 668,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.1582299853985574,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N25",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Hermsdorfer Damm/Berliner Str.",
-          "variants": 1,
-          "tripCount": 24,
-          "stops": 13,
-          "lengthKm": 5.96,
-          "stats": {
-            "observations": 276,
-            "matched": 276,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.8454530333454926,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Tegel",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 14,
-          "lengthKm": 5.52,
-          "stats": {
-            "observations": 276,
-            "matched": 276,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6243023895423414,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N26",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Hertzallee",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 23,
-          "lengthKm": 9.73,
-          "stats": {
-            "observations": 446,
-            "matched": 446,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.9449526162454673,
-            "roundaboutSegs": 15,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Seestr.",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 24,
-          "lengthKm": 10.19,
-          "stats": {
-            "observations": 475,
-            "matched": 475,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.850425648833899,
-            "roundaboutSegs": 30,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N30",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Westerwaldstr.",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 11,
-          "lengthKm": 3.28,
-          "stats": {
-            "observations": 148,
-            "matched": 148,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.840415876547292,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Rathaus Spandau",
-          "variants": 2,
-          "tripCount": 28,
-          "stops": 10,
-          "lengthKm": 2.84,
-          "stats": {
-            "observations": 123,
-            "matched": 123,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.2671584390501924,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N33",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "U Haselhorst",
-          "variants": 3,
-          "tripCount": 21,
-          "stops": 25,
-          "lengthKm": 10.45,
-          "stats": {
-            "observations": 391,
-            "matched": 391,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.810695692578051,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "An der Mühle",
-          "variants": 4,
-          "tripCount": 22,
-          "stops": 25,
-          "lengthKm": 10.39,
-          "stats": {
-            "observations": 376,
-            "matched": 376,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.971588337502292,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N34",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Gutsstr.",
-          "variants": 4,
-          "tripCount": 22,
-          "stops": 31,
-          "lengthKm": 13.4,
-          "stats": {
-            "observations": 580,
-            "matched": 580,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.768872940114202,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Rathaus Spandau",
-          "variants": 4,
-          "tripCount": 12,
-          "stops": 32,
-          "lengthKm": 13.3,
-          "stats": {
-            "observations": 592,
-            "matched": 592,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.8165178144611345,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N35",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "Alt-Kladow",
-          "headsign": "Alt-Kladow",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 14,
-          "lengthKm": 6.06,
-          "stats": {
-            "observations": 285,
-            "matched": 285,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.967788059661655,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N36",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Flughafen BER",
-          "variants": 2,
-          "tripCount": 22,
-          "stops": 39,
-          "lengthKm": 29.75,
-          "stats": {
-            "observations": 1306,
-            "matched": 1306,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.1556563440904597,
-            "roundaboutSegs": 83,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Mittenwalde (LDS), Yorckstr.",
-          "variants": 2,
-          "tripCount": 20,
-          "stops": 39,
-          "lengthKm": 29.4,
-          "stats": {
-            "observations": 1410,
-            "matched": 1410,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.4063352205666122,
-            "roundaboutSegs": 110,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N39",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Aalemannufer",
-          "variants": 1,
-          "tripCount": 42,
-          "stops": 17,
-          "lengthKm": 7.22,
-          "stats": {
-            "observations": 265,
-            "matched": 265,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.231128414867579,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Rohrdamm",
-          "variants": 2,
-          "tripCount": 38,
-          "stops": 17,
-          "lengthKm": 7.36,
-          "stats": {
-            "observations": 271,
-            "matched": 271,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.940583043229271,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N40",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Karlshorst",
-          "variants": 4,
-          "tripCount": 8,
-          "stops": 42,
-          "lengthKm": 17.16,
-          "stats": {
-            "observations": 815,
-            "matched": 815,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.2580087876594748,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Berlin Hauptbahnhof",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 55,
-          "lengthKm": 23.75,
-          "stats": {
-            "observations": 978,
-            "matched": 978,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.887477158966846,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N42",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S+U Alexanderplatz Bhf/Memhardstr.",
-          "variants": 4,
-          "tripCount": 13,
-          "stops": 23,
-          "lengthKm": 9.55,
-          "stats": {
-            "observations": 449,
-            "matched": 449,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.7282013686837603,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Südkreuz Bhf",
-          "variants": 2,
-          "tripCount": 12,
-          "stops": 24,
-          "lengthKm": 9.77,
-          "stats": {
-            "observations": 468,
-            "matched": 468,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.134747193538926,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N43",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "U Berliner Str.",
-          "variants": 3,
-          "tripCount": 12,
-          "stops": 14,
-          "lengthKm": 6.52,
-          "stats": {
-            "observations": 312,
-            "matched": 312,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.2691671766966124,
-            "roundaboutSegs": 19,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Theodor-Heuss-Platz",
-          "variants": 6,
-          "tripCount": 10,
-          "stops": 15,
-          "lengthKm": 6.35,
-          "stats": {
-            "observations": 298,
-            "matched": 298,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.539651137351102,
-            "roundaboutSegs": 6,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N50",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Französisch Buchholz Kirche",
-          "variants": 6,
-          "tripCount": 34,
-          "stops": 58,
-          "lengthKm": 24.51,
-          "stats": {
-            "observations": 962,
-            "matched": 962,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.481134394113331,
-            "roundaboutSegs": 7,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Tierpark",
-          "variants": 19,
-          "tripCount": 15,
-          "stops": 55,
-          "lengthKm": 22.54,
-          "stats": {
-            "observations": 899,
-            "matched": 899,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.5030600838868073,
-            "roundaboutSegs": 15,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N52",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Grabbeallee/Pastor-Niemöller-Platz",
-          "variants": 1,
-          "tripCount": 24,
-          "stops": 11,
-          "lengthKm": 3.82,
-          "stats": {
-            "observations": 141,
-            "matched": 141,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.764878658227576,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Osloer Str.",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 13,
-          "lengthKm": 4.44,
-          "stats": {
-            "observations": 172,
-            "matched": 172,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.684795976666781,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N53",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Wilhelmsruher Damm",
-          "variants": 2,
-          "tripCount": 20,
-          "stops": 9,
-          "lengthKm": 5.66,
-          "stats": {
-            "observations": 256,
-            "matched": 256,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.111620338161397,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Grabbeallee/Pastor-Niemöller-Platz",
-          "variants": 2,
-          "tripCount": 20,
-          "stops": 8,
-          "lengthKm": 5.16,
-          "stats": {
-            "observations": 241,
-            "matched": 241,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5982171015100275,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N56",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "U Magdalenenstr./Buchberger Str.",
-          "headsign": "U Magdalenenstr./Buchberger Str.",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 52,
-          "lengthKm": 20.53,
-          "stats": {
-            "observations": 857,
-            "matched": 857,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.3371279432250853,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N58",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Buch",
-          "variants": 2,
-          "tripCount": 13,
-          "stops": 25,
-          "lengthKm": 11.83,
-          "stats": {
-            "observations": 554,
-            "matched": 554,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5191061284009262,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Prenzlauer Allee/Ostseestr.",
-          "variants": 3,
-          "tripCount": 15,
-          "stops": 24,
-          "lengthKm": 12.07,
-          "stats": {
-            "observations": 568,
-            "matched": 568,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.4392305617611794,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N60",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Flughafen BER",
-          "variants": 7,
-          "tripCount": 12,
-          "stops": 50,
-          "lengthKm": 27.72,
-          "stats": {
-            "observations": 998,
-            "matched": 998,
-            "noCandidates": 0,
-            "viterbiBreaks": 1,
-            "bridged": 0,
-            "rawStretchCount": 1,
-            "rawMeters": 20,
-            "meanError": 3.175688017091614,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Alexanderplatz Bhf/Memhardstr.",
-          "variants": 8,
-          "tripCount": 18,
-          "stops": 49,
-          "lengthKm": 28.64,
-          "stats": {
-            "observations": 969,
-            "matched": 969,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.4013934335914033,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N61",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Dämeritzstr.",
-          "variants": 2,
-          "tripCount": 28,
-          "stops": 13,
-          "lengthKm": 7.59,
-          "stats": {
-            "observations": 302,
-            "matched": 302,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.383695308461204,
-            "roundaboutSegs": 28,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Rahnsdorf",
-          "variants": 2,
-          "tripCount": 28,
-          "stops": 14,
-          "lengthKm": 5.47,
-          "stats": {
-            "observations": 227,
-            "matched": 227,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6112874701691626,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N62",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Wendenschloß",
-          "variants": 6,
-          "tripCount": 22,
-          "stops": 35,
-          "lengthKm": 15.28,
-          "stats": {
-            "observations": 699,
-            "matched": 699,
-            "noCandidates": 0,
-            "viterbiBreaks": 1,
-            "bridged": 0,
-            "rawStretchCount": 1,
-            "rawMeters": 20,
-            "meanError": 2.1749614477098063,
-            "roundaboutSegs": 7,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Wuhletal",
-          "variants": 8,
-          "tripCount": 11,
-          "stops": 36,
-          "lengthKm": 16.24,
-          "stats": {
-            "observations": 733,
-            "matched": 733,
-            "noCandidates": 0,
-            "viterbiBreaks": 2,
-            "bridged": 0,
-            "rawStretchCount": 2,
-            "rawMeters": 40,
-            "meanError": 2.0531227845594486,
-            "roundaboutSegs": 17,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N63",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Müggelschlößchenweg",
-          "variants": 2,
-          "tripCount": 24,
-          "stops": 23,
-          "lengthKm": 9.72,
-          "stats": {
-            "observations": 441,
-            "matched": 441,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.792535869819161,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Waltersdorfer Str./Parchwitzer Str.",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 18,
-          "lengthKm": 8.92,
-          "stats": {
-            "observations": 384,
-            "matched": 384,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6675859481365374,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N64",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Adlershof",
-          "variants": 6,
-          "tripCount": 24,
-          "stops": 37,
-          "lengthKm": 16.56,
-          "stats": {
-            "observations": 756,
-            "matched": 756,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.7816899421386112,
-            "roundaboutSegs": 10,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Wuhletal",
-          "variants": 9,
-          "tripCount": 24,
-          "stops": 38,
-          "lengthKm": 16.59,
-          "stats": {
-            "observations": 757,
-            "matched": 757,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.9759966133981337,
-            "roundaboutSegs": 15,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N65",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Rahnsdorf/Waldschänke",
-          "variants": 11,
-          "tripCount": 11,
-          "stops": 63,
-          "lengthKm": 28.89,
-          "stats": {
-            "observations": 1060,
-            "matched": 1060,
-            "noCandidates": 0,
-            "viterbiBreaks": 1,
-            "bridged": 0,
-            "rawStretchCount": 1,
-            "rawMeters": 20,
-            "meanError": 2.336781157859128,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 177
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Alexanderplatz Bhf/Memhardstr.",
-          "variants": 5,
-          "tripCount": 22,
-          "stops": 63,
-          "lengthKm": 28.62,
-          "stats": {
-            "observations": 1083,
-            "matched": 1083,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.797488427427988,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N68",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Alt-Schmöckwitz",
-          "variants": 1,
-          "tripCount": 24,
-          "stops": 5,
-          "lengthKm": 9.97,
-          "stats": {
-            "observations": 223,
-            "matched": 223,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.0027114948519262,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Adlershof",
-          "variants": 1,
-          "tripCount": 24,
-          "stops": 9,
-          "lengthKm": 11.12,
-          "stats": {
-            "observations": 276,
-            "matched": 276,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.771539302223922,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N69",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Odernheimer Str.",
-          "variants": 2,
-          "tripCount": 20,
-          "stops": 10,
-          "lengthKm": 8.97,
-          "stats": {
-            "observations": 286,
-            "matched": 286,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.490722246213965,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Schloßplatz Köpenick",
-          "variants": 3,
-          "tripCount": 20,
-          "stops": 14,
-          "lengthKm": 9.48,
-          "stats": {
-            "observations": 295,
-            "matched": 295,
-            "noCandidates": 0,
-            "viterbiBreaks": 2,
-            "bridged": 0,
-            "rawStretchCount": 2,
-            "rawMeters": 40,
-            "meanError": 2.2802189542451563,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N70",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Baumschulenstr./Köpenicker Landstr.",
-          "variants": 1,
-          "tripCount": 42,
-          "stops": 5,
-          "lengthKm": 1.34,
-          "stats": {
-            "observations": 68,
-            "matched": 68,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.4076367995820895,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Sonnenallee/Baumschulenstr.",
-          "variants": 1,
-          "tripCount": 24,
-          "stops": 5,
-          "lengthKm": 1.31,
-          "stats": {
-            "observations": 52,
-            "matched": 52,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.26416597557037,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N77",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "U Alt-Mariendorf",
-          "variants": 2,
-          "tripCount": 14,
-          "stops": 28,
-          "lengthKm": 9.84,
-          "stats": {
-            "observations": 409,
-            "matched": 409,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.4241038778576693,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Plänterwald",
-          "variants": 4,
-          "tripCount": 12,
-          "stops": 28,
-          "lengthKm": 9.65,
-          "stats": {
-            "observations": 318,
-            "matched": 318,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.3169265836405115,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N81",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Nahariyastr.",
-          "variants": 1,
-          "tripCount": 28,
-          "stops": 47,
-          "lengthKm": 16.75,
-          "stats": {
-            "observations": 681,
-            "matched": 681,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.4437759805065293,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Walther-Schreiber-Platz",
-          "variants": 3,
-          "tripCount": 26,
-          "stops": 49,
-          "lengthKm": 16.49,
-          "stats": {
-            "observations": 672,
-            "matched": 672,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.532893439319381,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N84",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Zehlendorf Eiche",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 43,
-          "lengthKm": 15.25,
-          "stats": {
-            "observations": 692,
-            "matched": 692,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.575403476926549,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Tempelhof",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 43,
-          "lengthKm": 15.12,
-          "stats": {
-            "observations": 636,
-            "matched": 636,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.3608427251861746,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N88",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Lichterfelde Süd",
-          "variants": 2,
-          "tripCount": 13,
-          "stops": 27,
-          "lengthKm": 9.02,
-          "stats": {
-            "observations": 387,
-            "matched": 387,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.3865119863355964,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Rathaus Steglitz",
-          "variants": 2,
-          "tripCount": 25,
-          "stops": 28,
-          "lengthKm": 8.98,
-          "stats": {
-            "observations": 346,
-            "matched": 346,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.51174780805674,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N91",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Boschpoler Str.",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 11,
-          "lengthKm": 4.88,
-          "stats": {
-            "observations": 202,
-            "matched": 202,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.4328418061179107,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Wuhletal",
-          "variants": 1,
-          "tripCount": 26,
-          "stops": 12,
-          "lengthKm": 5.35,
-          "stats": {
-            "observations": 248,
-            "matched": 248,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6798301178557735,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N94",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "U Magdalenenstr./Buchberger Str.",
-          "variants": 2,
-          "tripCount": 26,
-          "stops": 23,
-          "lengthKm": 9.63,
-          "stats": {
-            "observations": 444,
-            "matched": 444,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.2031159755360514,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "U Hermannplatz/Urbanstr.",
-          "variants": 2,
-          "tripCount": 13,
-          "stops": 23,
-          "lengthKm": 9.38,
-          "stats": {
-            "observations": 417,
-            "matched": 417,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 3.169935224602816,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N95",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Riesaer Str.",
-          "variants": 2,
-          "tripCount": 21,
-          "stops": 7,
-          "lengthKm": 2.5,
-          "stats": {
-            "observations": 55,
-            "matched": 55,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.5888354076633275,
-            "roundaboutSegs": 5,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S Mahlsdorf Bhf",
-          "variants": 2,
-          "tripCount": 19,
-          "stops": 10,
-          "lengthKm": 4.81,
-          "stats": {
-            "observations": 180,
-            "matched": 180,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 0.9026923095415407,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N96",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "S Mehrower Allee",
-          "variants": 2,
-          "tripCount": 9,
-          "stops": 18,
-          "lengthKm": 7.2,
-          "stats": {
-            "observations": 278,
-            "matched": 278,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 2.3393945063078805,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "S+U Wuhletal",
-          "variants": 1,
-          "tripCount": 22,
-          "stops": 17,
-          "lengthKm": 6.94,
-          "stats": {
-            "observations": 277,
-            "matched": 277,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.490739214884921,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
-      "line": "N97",
-      "mode": "bus",
-      "color": "#0059a9",
-      "dirs": [
-        {
-          "dir": "0",
-          "headsign": "Barnimplatz",
-          "variants": 1,
-          "tripCount": 33,
-          "stops": 10,
-          "lengthKm": 4.5,
-          "stats": {
-            "observations": 176,
-            "matched": 176,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.6561293284260579,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        },
-        {
-          "dir": "1",
-          "headsign": "Prendener Str.",
-          "variants": 1,
-          "tripCount": 30,
-          "stops": 10,
-          "lengthKm": 4.44,
-          "stats": {
-            "observations": 174,
-            "matched": 174,
-            "noCandidates": 0,
-            "viterbiBreaks": 0,
-            "bridged": 0,
-            "rawStretchCount": 0,
-            "rawMeters": 0,
-            "meanError": 1.641052619956386,
-            "roundaboutSegs": 0,
-            "extStart": 0,
-            "extEnd": 0
-          }
-        }
-      ]
-    },
-    {
       "line": "R931",
       "mode": "bus",
       "color": "#0059a9",
@@ -21043,6 +18411,2693 @@
           }
         }
       ]
+    },
+    {
+      "line": "N1",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S+U Zoologischer Garten Bhf",
+          "variants": 3,
+          "tripCount": 12,
+          "stops": 21,
+          "lengthKm": 10.38,
+          "stats": {
+            "observations": 439,
+            "matched": 439,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.168972345430702,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Helsingforser Platz",
+          "variants": 3,
+          "tripCount": 2,
+          "stops": 23,
+          "lengthKm": 10.58,
+          "stats": {
+            "observations": 483,
+            "matched": 483,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.804185045825012,
+            "roundaboutSegs": 10,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N2",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Hadlichstr.",
+          "variants": 7,
+          "tripCount": 6,
+          "stops": 48,
+          "lengthKm": 21.45,
+          "stats": {
+            "observations": 990,
+            "matched": 990,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.4320064188924424,
+            "roundaboutSegs": 41,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Ruhleben",
+          "variants": 6,
+          "tripCount": 6,
+          "stops": 46,
+          "lengthKm": 21.16,
+          "stats": {
+            "observations": 954,
+            "matched": 954,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.411955513295127,
+            "roundaboutSegs": 39,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N3",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Mexikoplatz",
+          "variants": 2,
+          "tripCount": 7,
+          "stops": 32,
+          "lengthKm": 15.18,
+          "stats": {
+            "observations": 700,
+            "matched": 700,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.4195407604098595,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Wittenbergplatz",
+          "variants": 3,
+          "tripCount": 7,
+          "stops": 31,
+          "lengthKm": 15.47,
+          "stats": {
+            "observations": 670,
+            "matched": 670,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.1030214380893857,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N5",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Riesaer Str.",
+          "variants": 10,
+          "tripCount": 4,
+          "stops": 47,
+          "lengthKm": 24.88,
+          "stats": {
+            "observations": 1016,
+            "matched": 1016,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.745358599653342,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Seydlitzstr.",
+          "variants": 9,
+          "tripCount": 4,
+          "stops": 50,
+          "lengthKm": 25.06,
+          "stats": {
+            "observations": 1059,
+            "matched": 1059,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.232136173527679,
+            "roundaboutSegs": 10,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N6",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "U Alt-Mariendorf",
+          "variants": 7,
+          "tripCount": 5,
+          "stops": 48,
+          "lengthKm": 21.45,
+          "stats": {
+            "observations": 933,
+            "matched": 933,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.6263717731093608,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "An der Mühle",
+          "variants": 8,
+          "tripCount": 5,
+          "stops": 48,
+          "lengthKm": 22.58,
+          "stats": {
+            "observations": 934,
+            "matched": 934,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.8102652545616773,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N7",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Flughafen BER",
+          "variants": 13,
+          "tripCount": 4,
+          "stops": 85,
+          "lengthKm": 43.9,
+          "stats": {
+            "observations": 1907,
+            "matched": 1907,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.9216549133262784,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Galenstr.",
+          "variants": 9,
+          "tripCount": 8,
+          "stops": 84,
+          "lengthKm": 44.14,
+          "stats": {
+            "observations": 1891,
+            "matched": 1891,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.0846927435045646,
+            "roundaboutSegs": 35,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N7X",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "Flughafen BER",
+          "headsign": "Flughafen BER",
+          "variants": 1,
+          "tripCount": 14,
+          "stops": 20,
+          "lengthKm": 28.7,
+          "stats": {
+            "observations": 1014,
+            "matched": 1014,
+            "noCandidates": 0,
+            "viterbiBreaks": 2,
+            "bridged": 0,
+            "rawStretchCount": 2,
+            "rawMeters": 37,
+            "meanError": 3.820258518569601,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N8",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S+U Hermannstr.",
+          "variants": 7,
+          "tripCount": 5,
+          "stops": 53,
+          "lengthKm": 22.57,
+          "stats": {
+            "observations": 999,
+            "matched": 999,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.8482205877215914,
+            "roundaboutSegs": 40,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Wilhelmsruher Damm",
+          "variants": 10,
+          "tripCount": 4,
+          "stops": 53,
+          "lengthKm": 22.63,
+          "stats": {
+            "observations": 1020,
+            "matched": 1020,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.112881812924874,
+            "roundaboutSegs": 21,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N9",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S+U Rathaus Steglitz",
+          "variants": 3,
+          "tripCount": 10,
+          "stops": 27,
+          "lengthKm": 13.48,
+          "stats": {
+            "observations": 656,
+            "matched": 656,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.289997201644831,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Osloer Str.",
+          "variants": 3,
+          "tripCount": 12,
+          "stops": 26,
+          "lengthKm": 13.27,
+          "stats": {
+            "observations": 663,
+            "matched": 663,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.096394028287031,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N10",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Sachtlebenstr.",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 44,
+          "lengthKm": 15.46,
+          "stats": {
+            "observations": 641,
+            "matched": 641,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.159743299985262,
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Hertzallee",
+          "variants": 4,
+          "tripCount": 20,
+          "stops": 43,
+          "lengthKm": 15.43,
+          "stats": {
+            "observations": 628,
+            "matched": 628,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.329087064520077,
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N12",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "Stahnsdorf, Waldschänke",
+          "headsign": "Stahnsdorf, Waldschänke",
+          "variants": 2,
+          "tripCount": 2,
+          "stops": 35,
+          "lengthKm": 15.61,
+          "stats": {
+            "observations": 647,
+            "matched": 647,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 4.531083435247376,
+            "roundaboutSegs": 49,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "Zehlendorf Eiche",
+          "headsign": "Zehlendorf Eiche",
+          "variants": 2,
+          "tripCount": 10,
+          "stops": 57,
+          "lengthKm": 25.34,
+          "stats": {
+            "observations": 991,
+            "matched": 991,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 4.318474628316978,
+            "roundaboutSegs": 49,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N13",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Teltow Stadt",
+          "variants": 3,
+          "tripCount": 6,
+          "stops": 39,
+          "lengthKm": 19.9,
+          "stats": {
+            "observations": 951,
+            "matched": 951,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.18376707952732338,
+            "roundaboutSegs": 67,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Potsdam Hbf",
+          "variants": 2,
+          "tripCount": 10,
+          "stops": 39,
+          "lengthKm": 19.83,
+          "stats": {
+            "observations": 924,
+            "matched": 924,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.33596531349188624,
+            "roundaboutSegs": 87,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N14",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Potsdam, Johannes-Kepler-Platz",
+          "variants": 6,
+          "tripCount": 11,
+          "stops": 59,
+          "lengthKm": 26.13,
+          "stats": {
+            "observations": 1307,
+            "matched": 1307,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.147635510788995,
+            "roundaboutSegs": 28,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Potsdam, Science Park/Universität",
+          "variants": 7,
+          "tripCount": 6,
+          "stops": 58,
+          "lengthKm": 26.3,
+          "stats": {
+            "observations": 1313,
+            "matched": 1313,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.1867172203929232,
+            "roundaboutSegs": 18,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N15",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Potsdam Hauptbahnhof",
+          "variants": 3,
+          "tripCount": 5,
+          "stops": 23,
+          "lengthKm": 12.85,
+          "stats": {
+            "observations": 590,
+            "matched": 590,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.35170594758699986,
+            "roundaboutSegs": 19,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Potsdam, Birkenweg",
+          "variants": 3,
+          "tripCount": 10,
+          "stops": 25,
+          "lengthKm": 15.01,
+          "stats": {
+            "observations": 725,
+            "matched": 725,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.11195954607489184,
+            "roundaboutSegs": 9,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N16",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Potsdam Hauptbahnhof",
+          "variants": 5,
+          "tripCount": 9,
+          "stops": 29,
+          "lengthKm": 12.39,
+          "stats": {
+            "observations": 598,
+            "matched": 598,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.44021710597588287,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Nikolassee",
+          "variants": 3,
+          "tripCount": 16,
+          "stops": 26,
+          "lengthKm": 12.47,
+          "stats": {
+            "observations": 597,
+            "matched": 597,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.6871352360956533,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N17",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Potsdam, Johannes-Kepler-Platz",
+          "variants": 18,
+          "tripCount": 2,
+          "stops": 51,
+          "lengthKm": 22.49,
+          "stats": {
+            "observations": 1144,
+            "matched": 1144,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.13053843005687454,
+            "roundaboutSegs": 8,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Potsdam, Institut für Agrartechnik",
+          "variants": 9,
+          "tripCount": 5,
+          "stops": 50,
+          "lengthKm": 22.13,
+          "stats": {
+            "observations": 1123,
+            "matched": 1123,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.11323752239808409,
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N18",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Nikolassee",
+          "variants": 2,
+          "tripCount": 24,
+          "stops": 13,
+          "lengthKm": 5.94,
+          "stats": {
+            "observations": 192,
+            "matched": 192,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.469371524353659,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Zehlendorf Eiche",
+          "variants": 2,
+          "tripCount": 24,
+          "stops": 13,
+          "lengthKm": 5.24,
+          "stats": {
+            "observations": 183,
+            "matched": 183,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.8270261587662409,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N20",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Seydlitzstr.",
+          "variants": 5,
+          "tripCount": 9,
+          "stops": 49,
+          "lengthKm": 18.31,
+          "stats": {
+            "observations": 736,
+            "matched": 736,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.431860667665708,
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Hainbuchenstr.",
+          "variants": 2,
+          "tripCount": 15,
+          "stops": 52,
+          "lengthKm": 18.75,
+          "stats": {
+            "observations": 767,
+            "matched": 767,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.7346839110241064,
+            "roundaboutSegs": 60,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N22",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Alt-Lübars",
+          "variants": 3,
+          "tripCount": 30,
+          "stops": 44,
+          "lengthKm": 17.97,
+          "stats": {
+            "observations": 787,
+            "matched": 787,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.246636824868802,
+            "roundaboutSegs": 4,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Tegelort",
+          "variants": 3,
+          "tripCount": 26,
+          "stops": 43,
+          "lengthKm": 17.91,
+          "stats": {
+            "observations": 795,
+            "matched": 795,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.1927400040766036,
+            "roundaboutSegs": 22,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N23",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "U Rohrdamm",
+          "variants": 1,
+          "tripCount": 42,
+          "stops": 9,
+          "lengthKm": 2.5,
+          "stats": {
+            "observations": 125,
+            "matched": 125,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.681004311541056,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Mäckeritzwiesen",
+          "variants": 1,
+          "tripCount": 38,
+          "stops": 9,
+          "lengthKm": 2.54,
+          "stats": {
+            "observations": 97,
+            "matched": 97,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.588773115775347,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N24",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Heiligensee",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 35,
+          "lengthKm": 13.97,
+          "stats": {
+            "observations": 635,
+            "matched": 635,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.5455866618310563,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Wilhelmsruher Damm",
+          "variants": 3,
+          "tripCount": 26,
+          "stops": 34,
+          "lengthKm": 14.1,
+          "stats": {
+            "observations": 668,
+            "matched": 668,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.1582299853985574,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N25",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Hermsdorfer Damm/Berliner Str.",
+          "variants": 1,
+          "tripCount": 24,
+          "stops": 13,
+          "lengthKm": 5.96,
+          "stats": {
+            "observations": 276,
+            "matched": 276,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.8454530333454926,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Tegel",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 14,
+          "lengthKm": 5.52,
+          "stats": {
+            "observations": 276,
+            "matched": 276,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.6243023895423414,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N26",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Hertzallee",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 23,
+          "lengthKm": 9.73,
+          "stats": {
+            "observations": 446,
+            "matched": 446,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.9449526162454673,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Seestr.",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 24,
+          "lengthKm": 10.19,
+          "stats": {
+            "observations": 475,
+            "matched": 475,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.850425648833899,
+            "roundaboutSegs": 30,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N30",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Westerwaldstr.",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 11,
+          "lengthKm": 3.28,
+          "stats": {
+            "observations": 148,
+            "matched": 148,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.840415876547292,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Rathaus Spandau",
+          "variants": 2,
+          "tripCount": 28,
+          "stops": 10,
+          "lengthKm": 2.84,
+          "stats": {
+            "observations": 123,
+            "matched": 123,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.2671584390501924,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N33",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "U Haselhorst",
+          "variants": 3,
+          "tripCount": 21,
+          "stops": 25,
+          "lengthKm": 10.45,
+          "stats": {
+            "observations": 391,
+            "matched": 391,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.810695692578051,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "An der Mühle",
+          "variants": 4,
+          "tripCount": 22,
+          "stops": 25,
+          "lengthKm": 10.39,
+          "stats": {
+            "observations": 376,
+            "matched": 376,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.971588337502292,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N34",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Gutsstr.",
+          "variants": 4,
+          "tripCount": 22,
+          "stops": 31,
+          "lengthKm": 13.4,
+          "stats": {
+            "observations": 580,
+            "matched": 580,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.768872940114202,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Rathaus Spandau",
+          "variants": 4,
+          "tripCount": 12,
+          "stops": 32,
+          "lengthKm": 13.3,
+          "stats": {
+            "observations": 592,
+            "matched": 592,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.8165178144611345,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N35",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "Alt-Kladow",
+          "headsign": "Alt-Kladow",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 14,
+          "lengthKm": 6.06,
+          "stats": {
+            "observations": 285,
+            "matched": 285,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.967788059661655,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N36",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Flughafen BER",
+          "variants": 2,
+          "tripCount": 22,
+          "stops": 39,
+          "lengthKm": 29.75,
+          "stats": {
+            "observations": 1306,
+            "matched": 1306,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.1556563440904597,
+            "roundaboutSegs": 83,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Mittenwalde (LDS), Yorckstr.",
+          "variants": 2,
+          "tripCount": 20,
+          "stops": 39,
+          "lengthKm": 29.4,
+          "stats": {
+            "observations": 1410,
+            "matched": 1410,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.4063352205666122,
+            "roundaboutSegs": 110,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N39",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Aalemannufer",
+          "variants": 1,
+          "tripCount": 42,
+          "stops": 17,
+          "lengthKm": 7.22,
+          "stats": {
+            "observations": 265,
+            "matched": 265,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.231128414867579,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Rohrdamm",
+          "variants": 2,
+          "tripCount": 38,
+          "stops": 17,
+          "lengthKm": 7.36,
+          "stats": {
+            "observations": 271,
+            "matched": 271,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.940583043229271,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N40",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Karlshorst",
+          "variants": 4,
+          "tripCount": 8,
+          "stops": 42,
+          "lengthKm": 17.16,
+          "stats": {
+            "observations": 815,
+            "matched": 815,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.2580087876594748,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Berlin Hauptbahnhof",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 55,
+          "lengthKm": 23.75,
+          "stats": {
+            "observations": 978,
+            "matched": 978,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.887477158966846,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N42",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S+U Alexanderplatz Bhf/Memhardstr.",
+          "variants": 4,
+          "tripCount": 13,
+          "stops": 23,
+          "lengthKm": 9.55,
+          "stats": {
+            "observations": 449,
+            "matched": 449,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.7282013686837603,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Südkreuz Bhf",
+          "variants": 2,
+          "tripCount": 12,
+          "stops": 24,
+          "lengthKm": 9.77,
+          "stats": {
+            "observations": 468,
+            "matched": 468,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.134747193538926,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N43",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "U Berliner Str.",
+          "variants": 3,
+          "tripCount": 12,
+          "stops": 14,
+          "lengthKm": 6.52,
+          "stats": {
+            "observations": 312,
+            "matched": 312,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.2691671766966124,
+            "roundaboutSegs": 19,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Theodor-Heuss-Platz",
+          "variants": 6,
+          "tripCount": 10,
+          "stops": 15,
+          "lengthKm": 6.35,
+          "stats": {
+            "observations": 298,
+            "matched": 298,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.539651137351102,
+            "roundaboutSegs": 6,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N50",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Französisch Buchholz Kirche",
+          "variants": 6,
+          "tripCount": 34,
+          "stops": 58,
+          "lengthKm": 24.51,
+          "stats": {
+            "observations": 962,
+            "matched": 962,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.481134394113331,
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Tierpark",
+          "variants": 19,
+          "tripCount": 15,
+          "stops": 55,
+          "lengthKm": 22.54,
+          "stats": {
+            "observations": 899,
+            "matched": 899,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.5030600838868073,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N52",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Grabbeallee/Pastor-Niemöller-Platz",
+          "variants": 1,
+          "tripCount": 24,
+          "stops": 11,
+          "lengthKm": 3.82,
+          "stats": {
+            "observations": 141,
+            "matched": 141,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.764878658227576,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Osloer Str.",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 13,
+          "lengthKm": 4.44,
+          "stats": {
+            "observations": 172,
+            "matched": 172,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.684795976666781,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N53",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wilhelmsruher Damm",
+          "variants": 2,
+          "tripCount": 20,
+          "stops": 9,
+          "lengthKm": 5.66,
+          "stats": {
+            "observations": 256,
+            "matched": 256,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.111620338161397,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Grabbeallee/Pastor-Niemöller-Platz",
+          "variants": 2,
+          "tripCount": 20,
+          "stops": 8,
+          "lengthKm": 5.16,
+          "stats": {
+            "observations": 241,
+            "matched": 241,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.5982171015100275,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N56",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "U Magdalenenstr./Buchberger Str.",
+          "headsign": "U Magdalenenstr./Buchberger Str.",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 52,
+          "lengthKm": 20.53,
+          "stats": {
+            "observations": 857,
+            "matched": 857,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.3371279432250853,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N58",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Buch",
+          "variants": 2,
+          "tripCount": 13,
+          "stops": 25,
+          "lengthKm": 11.83,
+          "stats": {
+            "observations": 554,
+            "matched": 554,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.5191061284009262,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Prenzlauer Allee/Ostseestr.",
+          "variants": 3,
+          "tripCount": 15,
+          "stops": 24,
+          "lengthKm": 12.07,
+          "stats": {
+            "observations": 568,
+            "matched": 568,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.4392305617611794,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N60",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Flughafen BER",
+          "variants": 7,
+          "tripCount": 12,
+          "stops": 50,
+          "lengthKm": 27.72,
+          "stats": {
+            "observations": 998,
+            "matched": 998,
+            "noCandidates": 0,
+            "viterbiBreaks": 1,
+            "bridged": 0,
+            "rawStretchCount": 1,
+            "rawMeters": 20,
+            "meanError": 3.175688017091614,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Alexanderplatz Bhf/Memhardstr.",
+          "variants": 8,
+          "tripCount": 18,
+          "stops": 49,
+          "lengthKm": 28.64,
+          "stats": {
+            "observations": 969,
+            "matched": 969,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.4013934335914033,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N61",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Dämeritzstr.",
+          "variants": 2,
+          "tripCount": 28,
+          "stops": 13,
+          "lengthKm": 7.59,
+          "stats": {
+            "observations": 302,
+            "matched": 302,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.383695308461204,
+            "roundaboutSegs": 28,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Rahnsdorf",
+          "variants": 2,
+          "tripCount": 28,
+          "stops": 14,
+          "lengthKm": 5.47,
+          "stats": {
+            "observations": 227,
+            "matched": 227,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.6112874701691626,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N62",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wendenschloß",
+          "variants": 6,
+          "tripCount": 22,
+          "stops": 35,
+          "lengthKm": 15.28,
+          "stats": {
+            "observations": 699,
+            "matched": 699,
+            "noCandidates": 0,
+            "viterbiBreaks": 1,
+            "bridged": 0,
+            "rawStretchCount": 1,
+            "rawMeters": 20,
+            "meanError": 2.1749614477098063,
+            "roundaboutSegs": 7,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Wuhletal",
+          "variants": 8,
+          "tripCount": 11,
+          "stops": 36,
+          "lengthKm": 16.24,
+          "stats": {
+            "observations": 733,
+            "matched": 733,
+            "noCandidates": 0,
+            "viterbiBreaks": 2,
+            "bridged": 0,
+            "rawStretchCount": 2,
+            "rawMeters": 40,
+            "meanError": 2.0531227845594486,
+            "roundaboutSegs": 17,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N63",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Müggelschlößchenweg",
+          "variants": 2,
+          "tripCount": 24,
+          "stops": 23,
+          "lengthKm": 9.72,
+          "stats": {
+            "observations": 441,
+            "matched": 441,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.792535869819161,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Waltersdorfer Str./Parchwitzer Str.",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 18,
+          "lengthKm": 8.92,
+          "stats": {
+            "observations": 384,
+            "matched": 384,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.6675859481365374,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N64",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Adlershof",
+          "variants": 6,
+          "tripCount": 24,
+          "stops": 37,
+          "lengthKm": 16.56,
+          "stats": {
+            "observations": 756,
+            "matched": 756,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.7816899421386112,
+            "roundaboutSegs": 10,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Wuhletal",
+          "variants": 9,
+          "tripCount": 24,
+          "stops": 38,
+          "lengthKm": 16.59,
+          "stats": {
+            "observations": 757,
+            "matched": 757,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.9759966133981337,
+            "roundaboutSegs": 15,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N65",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Rahnsdorf/Waldschänke",
+          "variants": 11,
+          "tripCount": 11,
+          "stops": 63,
+          "lengthKm": 28.89,
+          "stats": {
+            "observations": 1060,
+            "matched": 1060,
+            "noCandidates": 0,
+            "viterbiBreaks": 1,
+            "bridged": 0,
+            "rawStretchCount": 1,
+            "rawMeters": 20,
+            "meanError": 2.336781157859128,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 177
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Alexanderplatz Bhf/Memhardstr.",
+          "variants": 5,
+          "tripCount": 22,
+          "stops": 63,
+          "lengthKm": 28.62,
+          "stats": {
+            "observations": 1083,
+            "matched": 1083,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.797488427427988,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N68",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Alt-Schmöckwitz",
+          "variants": 1,
+          "tripCount": 24,
+          "stops": 5,
+          "lengthKm": 9.97,
+          "stats": {
+            "observations": 223,
+            "matched": 223,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.0027114948519262,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Adlershof",
+          "variants": 1,
+          "tripCount": 24,
+          "stops": 9,
+          "lengthKm": 11.12,
+          "stats": {
+            "observations": 276,
+            "matched": 276,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.771539302223922,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N69",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Odernheimer Str.",
+          "variants": 2,
+          "tripCount": 20,
+          "stops": 10,
+          "lengthKm": 8.97,
+          "stats": {
+            "observations": 286,
+            "matched": 286,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.490722246213965,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Schloßplatz Köpenick",
+          "variants": 3,
+          "tripCount": 20,
+          "stops": 14,
+          "lengthKm": 9.48,
+          "stats": {
+            "observations": 295,
+            "matched": 295,
+            "noCandidates": 0,
+            "viterbiBreaks": 2,
+            "bridged": 0,
+            "rawStretchCount": 2,
+            "rawMeters": 40,
+            "meanError": 2.2802189542451563,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N70",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Baumschulenstr./Köpenicker Landstr.",
+          "variants": 1,
+          "tripCount": 42,
+          "stops": 5,
+          "lengthKm": 1.34,
+          "stats": {
+            "observations": 68,
+            "matched": 68,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.4076367995820895,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Sonnenallee/Baumschulenstr.",
+          "variants": 1,
+          "tripCount": 24,
+          "stops": 5,
+          "lengthKm": 1.31,
+          "stats": {
+            "observations": 52,
+            "matched": 52,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.26416597557037,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N77",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "U Alt-Mariendorf",
+          "variants": 2,
+          "tripCount": 14,
+          "stops": 28,
+          "lengthKm": 9.84,
+          "stats": {
+            "observations": 409,
+            "matched": 409,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.4241038778576693,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Plänterwald",
+          "variants": 4,
+          "tripCount": 12,
+          "stops": 28,
+          "lengthKm": 9.65,
+          "stats": {
+            "observations": 318,
+            "matched": 318,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.3169265836405115,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N81",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Nahariyastr.",
+          "variants": 1,
+          "tripCount": 28,
+          "stops": 47,
+          "lengthKm": 16.75,
+          "stats": {
+            "observations": 681,
+            "matched": 681,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.4437759805065293,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Walther-Schreiber-Platz",
+          "variants": 3,
+          "tripCount": 26,
+          "stops": 49,
+          "lengthKm": 16.49,
+          "stats": {
+            "observations": 672,
+            "matched": 672,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.532893439319381,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N84",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Zehlendorf Eiche",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 43,
+          "lengthKm": 15.25,
+          "stats": {
+            "observations": 692,
+            "matched": 692,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.575403476926549,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Tempelhof",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 43,
+          "lengthKm": 15.12,
+          "stats": {
+            "observations": 636,
+            "matched": 636,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.3608427251861746,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N88",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Lichterfelde Süd",
+          "variants": 2,
+          "tripCount": 13,
+          "stops": 27,
+          "lengthKm": 9.02,
+          "stats": {
+            "observations": 387,
+            "matched": 387,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.3865119863355964,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Rathaus Steglitz",
+          "variants": 2,
+          "tripCount": 25,
+          "stops": 28,
+          "lengthKm": 8.98,
+          "stats": {
+            "observations": 346,
+            "matched": 346,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.51174780805674,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N91",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Boschpoler Str.",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 11,
+          "lengthKm": 4.88,
+          "stats": {
+            "observations": 202,
+            "matched": 202,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.4328418061179107,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Wuhletal",
+          "variants": 1,
+          "tripCount": 26,
+          "stops": 12,
+          "lengthKm": 5.35,
+          "stats": {
+            "observations": 248,
+            "matched": 248,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.6798301178557735,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N94",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "U Magdalenenstr./Buchberger Str.",
+          "variants": 2,
+          "tripCount": 26,
+          "stops": 23,
+          "lengthKm": 9.63,
+          "stats": {
+            "observations": 444,
+            "matched": 444,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.2031159755360514,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "U Hermannplatz/Urbanstr.",
+          "variants": 2,
+          "tripCount": 13,
+          "stops": 23,
+          "lengthKm": 9.38,
+          "stats": {
+            "observations": 417,
+            "matched": 417,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 3.169935224602816,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N95",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Riesaer Str.",
+          "variants": 2,
+          "tripCount": 21,
+          "stops": 7,
+          "lengthKm": 2.5,
+          "stats": {
+            "observations": 55,
+            "matched": 55,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.5888354076633275,
+            "roundaboutSegs": 5,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Mahlsdorf Bhf",
+          "variants": 2,
+          "tripCount": 19,
+          "stops": 10,
+          "lengthKm": 4.81,
+          "stats": {
+            "observations": 180,
+            "matched": 180,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 0.9026923095415407,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N96",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "S Mehrower Allee",
+          "variants": 2,
+          "tripCount": 9,
+          "stops": 18,
+          "lengthKm": 7.2,
+          "stats": {
+            "observations": 278,
+            "matched": 278,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 2.3393945063078805,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S+U Wuhletal",
+          "variants": 1,
+          "tripCount": 22,
+          "stops": 17,
+          "lengthKm": 6.94,
+          "stats": {
+            "observations": 277,
+            "matched": 277,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.490739214884921,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "line": "N97",
+      "mode": "bus",
+      "color": "#000000",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Barnimplatz",
+          "variants": 1,
+          "tripCount": 33,
+          "stops": 10,
+          "lengthKm": 4.5,
+          "stats": {
+            "observations": 176,
+            "matched": 176,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.6561293284260579,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Prendener Str.",
+          "variants": 1,
+          "tripCount": 30,
+          "stops": 10,
+          "lengthKm": 4.44,
+          "stats": {
+            "observations": 174,
+            "matched": 174,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "rawMeters": 0,
+            "meanError": 1.641052619956386,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "rank": 2
     }
   ]
 }
