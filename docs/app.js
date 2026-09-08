@@ -1381,7 +1381,7 @@ async function init() {
       const fs = Math.max(16, Math.round(out.width / 130));
       ctx.font = `${fs}px sans-serif`;
       ctx.textBaseline = 'bottom';
-      const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: BODS (DfT) · TfL';
+      const txt = '© OpenStreetMap contributors · OpenFreeMap · Timetables: VBB (Verkehrsverbund Berlin-Brandenburg)';
       const tw = ctx.measureText(txt).width;
       ctx.fillStyle = 'rgba(255,255,255,0.82)';
       ctx.fillRect(out.width - tw - fs, out.height - fs * 1.7, tw + fs, fs * 1.7);
@@ -1392,7 +1392,7 @@ async function init() {
       const d = new Date();
       const pad = (n) => String(n).padStart(2, '0');
       const a = document.createElement('a');
-      a.download = `mexicocity-transit_${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}_${out.width}x${out.height}.png`;
+      a.download = `berlin-transit_${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}_${out.width}x${out.height}.png`;
       a.href = URL.createObjectURL(blob);
       if (!window.__exportNoSave) a.click(); // test hook: render without downloading
       setTimeout(() => URL.revokeObjectURL(a.href), 30000);
@@ -1625,7 +1625,7 @@ async function init() {
             const fs = Math.max(16, Math.round(Wf / 500));
             cx.font = `${fs}px sans-serif`;
             cx.textBaseline = 'bottom';
-            const txt = '© OpenStreetMap contributors · OpenFreeMap · GTFS: BODS (DfT) · TfL';
+            const txt = '© OpenStreetMap contributors · OpenFreeMap · Timetables: VBB (Verkehrsverbund Berlin-Brandenburg)';
             const tw = Math.min(cx.measureText(txt).width, wpx - fs);
             cx.fillStyle = 'rgba(255,255,255,0.82)';
             cx.fillRect(wpx - tw - fs, hpx - fs * 1.7, tw + fs, fs * 1.7);
@@ -1651,7 +1651,7 @@ async function init() {
       const d = new Date();
       const p2 = (v) => String(v).padStart(2, '0');
       const a = document.createElement('a');
-      a.download = `mexicocity-transit-giant_${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}_${Wf}x${Hf}.png`;
+      a.download = `berlin-transit-giant_${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}_${Wf}x${Hf}.png`;
       a.href = URL.createObjectURL(blob);
       if (window.__exportNoSave) {
         window.__lastGiantURL = a.href; // test hook: decode-check without downloading
