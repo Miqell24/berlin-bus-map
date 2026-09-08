@@ -100,7 +100,11 @@ export function nightPass(dir, NIGHT, opts = {}) {
     for (const f of badges.features) {
       const p = f.properties;
       if (!p) continue;
-      if (p.line !== undefined && isNight(String(p.line))) { p.color = BLACK; p.colorDark = BLACK; stats.badges++; }
+      // `lbl` is what the badge PRINTS where the key carries an operator code
+      // (bvg:N1 prints N1) — the night rule is written against the printed
+      // number, so it has to be tested on the same string
+      const shown = p.lbl !== undefined ? p.lbl : p.line;
+      if (shown !== undefined && isNight(String(shown))) { p.color = BLACK; p.colorDark = BLACK; stats.badges++; }
       if (sort && Array.isArray(p.arr)) p.arr = order(p.arr);
     }
     wr('badges.geojson', badges);

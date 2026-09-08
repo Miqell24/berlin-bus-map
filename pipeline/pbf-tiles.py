@@ -1,41 +1,56 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Cuts the missing OSM extracts out of Geofabrik .pbf files — same JSON shape
-as Overpass ('elements': ways with tags, node ids and geometry), so build.mjs
-cannot tell the difference. Used when Overpass is too congested to serve the
-5×5 road grid, which for a 95 × 82 km box over German street density is most
-of the time.
+"""Cuts the OSM extracts out of Geofabrik .pbf files — same JSON shape as
+Overpass ('elements': ways with tags, node ids and geometry), so build.mjs
+cannot tell the difference. Used because no public Overpass mirror will serve
+a box this size (every round came back 504 already for the old 95 x 82 km
+Berlin frame).
 
-Berlin needs TWO extracts: Geofabrik's berlin is the city alone and its
-brandenburg is the Land with the city cut out, so the Speckgürtel lives in the
-second file. Way ids are OSM's own, so build.mjs dedupes the overlap and the
-node ids stitch the topology across the seam.
+The map is the WHOLE Verbund since 8.09.2026, so the cut spans Berlin, all of
+Brandenburg and the strips of the neighbouring Laender and of Poland the VBB
+lines reach into:
+
+  roads (51.28-54.05 N, 10.68-14.87 E): the bus network — Berlin, Brandenburg,
+  the Uckermark border, the X2 run to Wolfsburg in Lower Saxony and the
+  long-term replacement services that reach Zuessow and Schwerin;
+  rails (50.75-54.40 N, 10.95-17.15 E): trams, U-Bahn, S-Bahn AND the 67 RB/RE
+  regional lines, which leave the Verbund for Stralsund, Schwerin, Magdeburg,
+  Leipzig, Dresden, Goerlitz, Szczecin, Zielona Gora and Wroclaw.
+
+Geofabrik's berlin is the city alone and its brandenburg has the city cut out,
+so both are always needed; the others carry the parts outside. Way ids are
+OSM's own, so build.mjs dedupes the overlap and the node ids stitch the
+topology across every seam.
 """
 import json, os, re, sys
 import osmium
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
-PBFS = [os.path.join(ROOT, 'data', 'berlin-latest.osm.pbf'),
-        os.path.join(ROOT, 'data', 'brandenburg-latest.osm.pbf')]
+NAMES = ['berlin', 'brandenburg', 'mecklenburg-vorpommern', 'sachsen',
+         'sachsen-anhalt', 'niedersachsen',
+         'dolnoslaskie', 'lubuskie', 'zachodniopomorskie']
+PBFS = [os.path.join(ROOT, 'data', f'{n}-latest.osm.pbf') for n in NAMES]
 
-# must match pipeline/download.sh
-S, N, W, E = 52.03, 52.94, 12.66, 13.98
-RAIL_BOX = (52.24, 12.94, 52.81, 13.98)
+# must match pipeline/download.sh; the numbers come from scope.mjs, which
+# prints the stop extent of the two graphs
+S, N, W, E = 51.28, 54.05, 10.68, 14.87
+GRID = 8
+RAIL_BOX = (50.75, 10.95, 54.40, 17.15)   # S, W, N, E
 
 HW = re.compile(r'^(motorway|trunk|primary|secondary|tertiary|unclassified|residential|living_street|service|busway|construction|motorway_link|trunk_link|primary_link|secondary_link|tertiary_link)$')
 RAIL = re.compile(r'^(subway|tram|light_rail|rail|construction)$')
 
 road_tiles = {}
-for i in range(1, 26):
+for i in range(1, GRID * GRID + 1):
     f = os.path.join(ROOT, f'data/osm/tiles/t{i}.json')
     if os.path.exists(f):
         continue
-    row, col = (i - 1) // 5, (i - 1) % 5
-    road_tiles[i] = (S + (N - S) * row / 5, S + (N - S) * (row + 1) / 5,
-                     W + (E - W) * col / 5, W + (E - W) * (col + 1) / 5)
+    row, col = (i - 1) // GRID, (i - 1) % GRID
+    road_tiles[i] = (S + (N - S) * row / GRID, S + (N - S) * (row + 1) / GRID,
+                     W + (E - W) * col / GRID, W + (E - W) * (col + 1) / GRID)
 rail_file = os.path.join(ROOT, 'data/osm/berlin-rail.json')
 need_rail = not os.path.exists(rail_file)
-print('brakujące kafle dróg:', sorted(road_tiles), '| szyny:', need_rail, flush=True)
+print('brakujące kafle dróg:', len(road_tiles), '| szyny:', need_rail, flush=True)
 if not road_tiles and not need_rail:
     sys.exit(0)
 os.makedirs(os.path.join(ROOT, 'data/osm/tiles'), exist_ok=True)
@@ -95,14 +110,12 @@ for pbf in PBFS:
     print('czytam', os.path.basename(pbf), flush=True)
     H().apply_file(pbf, locations=True, idx='flex_mem')
 
-GEN = 'pbf-tiles.py (Geofabrik berlin + brandenburg)'
+GEN = 'pbf-tiles.py (Geofabrik: ' + ', '.join(NAMES) + ')'
 for i, els in out.items():
     f = os.path.join(ROOT, f'data/osm/tiles/t{i}.json')
-    if os.path.exists(f):
-        print(f't{i}: już jest (Overpass zdążył)', flush=True); continue
     json.dump({'version': 0.6, 'generator': GEN, 'elements': els}, open(f, 'w'))
     print(f't{i}: {len(els)} dróg', flush=True)
-if need_rail and not os.path.exists(rail_file):
+if need_rail:
     json.dump({'version': 0.6, 'generator': GEN, 'elements': out_rail}, open(rail_file, 'w'))
     print(f'szyny: {len(out_rail)} odcinków', flush=True)
 print('gotowe', flush=True)

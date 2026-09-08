@@ -183,7 +183,7 @@ async function init() {
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), 'top-right');
   map.addControl(new maplibregl.GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true, showUserHeading: true, fitBoundsOptions: { maxZoom: 15.5 } }), 'top-right');
   map.addControl(new maplibregl.ScaleControl({ maxWidth: 120 }), 'bottom-left');
-  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: VBB (Verkehrsverbund Berlin-Brandenburg)' }));
+  map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'Timetables: VBB — the whole Verkehrsverbund Berlin-Brandenburg' }));
 
   const [meta, linesMeta] = await Promise.all([
     fetch('data/meta.json').then((r) => r.json()),
@@ -212,8 +212,15 @@ async function init() {
   // category membership is by COLOUR — set once, in the pipeline
   const nTro = meta.lines.filter((l) => l.mode === 'bus' && l.color === '#149a3f').length;
   const nMB = meta.lines.filter((l) => l.mode === 'bus' && l.color === '#e8a000').length;
+  // mode 'tram' carries every rail here; the four RB/RE the feed publishes as
+  // ROAD services (long-term replacements) stay counted as the buses they are
+  const isU = (l) => l.mode === 'tram' && /^U\d/.test(l.line);
+  const isS = (l) => l.mode === 'tram' && /^S\d/.test(l.line);
+  const isR = (l) => l.mode === 'tram' && /^(RB|RE|FEX)/.test(l.line);
+  const nU = meta.lines.filter(isU).length, nS = meta.lines.filter(isS).length,
+    nR = meta.lines.filter(isR).length;
   document.getElementById('count').textContent =
-    `(${nBus} bus · ${nTram} tram, U-Bahn & S-Bahn)`;
+    `(${nBus} bus · ${nTram - nU - nS - nR} tram · ${nU} U-Bahn · ${nS} S-Bahn · ${nR} regional)`;
   document.getElementById('stamp').textContent = new Date(meta.generatedAt).toLocaleDateString('en-GB');
   // The pipeline key keeps a disambiguating prefix — route merging, colour
   // lookup and selection all match on it — while everything the panel and the
@@ -237,10 +244,36 @@ async function init() {
   const lineColor = (l) => LINE_COLORS[l] || CORRIDOR_INK;
   const LINE_COLOR_MATCH = ['match', ['get', 'line'],
     ...Object.entries(LINE_COLORS).flatMap(([l, c]) => [l, c]), CORRIDOR_INK];
+  // Verbund-wide a number belongs to a COUNTY, not to the map: 401 is an
+  // Oder-Spree line and an Uckermark line, tram 1 runs in three towns. Each
+  // chip prints what its own stop flag says, so the list is grouped by the
+  // operator that runs it — the Randstad panel. `ops` comes from the feed's
+  // agency names; the three Berlin operators lead, the rest follow by size.
+  const OP_TITLE = new Map(Object.entries(meta.ops || {}));
+  const OP_FIRST = ['bvg', 'sbahn', 'vip'];
+  const CATS = [['bus', 'Buses'], ['tram', 'Trams'], ['metro', 'Trains']];
+  const catOf = (l) => (l.metro ? 'metro' : l.mode);
   const paintChips = (linesView) => {
-    document.getElementById('chips').innerHTML = meta.lines
-      .map((l) => chipHtml(l, linesView ? lineColor(l.line) : l.color, l.line === state.selected && l.mode === state.selMode))
-      .join(' ');
+    const active = (l) => l.line === state.selected && l.mode === state.selMode;
+    const bucket = new Map();
+    for (const l of meta.lines) {
+      const k = l.op || 'other';
+      if (!bucket.has(k)) bucket.set(k, []);
+      bucket.get(k).push(l);
+    }
+    const order = [...OP_FIRST.filter((k) => bucket.has(k)),
+      ...[...bucket.keys()].filter((k) => !OP_FIRST.includes(k))
+        .sort((a, b) => bucket.get(b).length - bucket.get(a).length)];
+    const section = (key) => {
+      const ls = bucket.get(key);
+      if (!ls || !ls.length) return '';
+      const groups = CATS.map(([c, title]) => [title, ls.filter((l) => catOf(l) === c)])
+        .filter(([, cl]) => cl.length);
+      return `<h3 class="chip-head">${esc(OP_TITLE.get(key) || key)} <span class="n">${ls.length}</span></h3>` +
+        groups.map(([title, cl]) => (groups.length > 1 ? `<h4 class="chip-sub">${esc(title)}</h4>` : '') +
+          `<div class="chip-cloud">${cl.map((l) => chipHtml(l, linesView ? lineColor(l.line) : l.color, active(l))).join(' ')}</div>`).join('');
+    };
+    document.getElementById('chips').innerHTML = order.map(section).join('');
   };
 
   // Panel state. `view` is the big one: 'corridors' is this map as it has always
@@ -1381,7 +1414,7 @@ async function init() {
       const fs = Math.max(16, Math.round(out.width / 130));
       ctx.font = `${fs}px sans-serif`;
       ctx.textBaseline = 'bottom';
-      const txt = '© OpenStreetMap contributors · OpenFreeMap · Timetables: VBB (Verkehrsverbund Berlin-Brandenburg)';
+      const txt = '© OpenStreetMap contributors · OpenFreeMap · Timetables: VBB — the whole Verkehrsverbund Berlin-Brandenburg';
       const tw = ctx.measureText(txt).width;
       ctx.fillStyle = 'rgba(255,255,255,0.82)';
       ctx.fillRect(out.width - tw - fs, out.height - fs * 1.7, tw + fs, fs * 1.7);
@@ -1625,7 +1658,7 @@ async function init() {
             const fs = Math.max(16, Math.round(Wf / 500));
             cx.font = `${fs}px sans-serif`;
             cx.textBaseline = 'bottom';
-            const txt = '© OpenStreetMap contributors · OpenFreeMap · Timetables: VBB (Verkehrsverbund Berlin-Brandenburg)';
+            const txt = '© OpenStreetMap contributors · OpenFreeMap · Timetables: VBB — the whole Verkehrsverbund Berlin-Brandenburg';
             const tw = Math.min(cx.measureText(txt).width, wpx - fs);
             cx.fillStyle = 'rgba(255,255,255,0.82)';
             cx.fillRect(wpx - tw - fs, hpx - fs * 1.7, tw + fs, fs * 1.7);

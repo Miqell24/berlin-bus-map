@@ -139,6 +139,23 @@ body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 .sw.terminus { width: 13px; height: 13px; border-radius: 50%; background: var(--kmk); border: 2.5px solid var(--kmk-dark); }
 details.lines { border-top: 1px solid #e3e8f0; padding-top: 8px; margin-bottom: 4px; font-size: 12.5px; color: #223; }
 details.lines summary { cursor: pointer; color: var(--kmk-dark); font-weight: 600; }
+/* thirty-five operators in one Verbund: the line list is grouped by the one
+   that runs the line, so the three trams that all print "1" — Cottbus,
+   Frankfurt (Oder), Brandenburg an der Havel — sit under three headings */
+.chip-head {
+  display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+  margin: 12px 0 0; font-size: 12px; font-weight: 700; color: var(--kmk-dark);
+}
+.chip-head:first-child { margin-top: 6px; }
+.chip-head .n {
+  font-weight: 600; font-size: 11px; color: #556;
+  background: #eef1f6; border-radius: 999px; padding: 0 6px;
+}
+/* one operator can run buses, trams and trains: the cloud says which */
+.chip-sub {
+  margin: 7px 0 2px; font-size: 10px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: #7b828c;
+}
 .chip-cloud { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; }
 .debug { display: block; margin-top: 10px; font-size: 11.5px; color: #667; cursor: pointer; }
 .debug input { vertical-align: -2px; margin-right: 4px; }

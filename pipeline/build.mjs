@@ -116,46 +116,49 @@ if (ti >= 0) {
 }
 const busAll = busArgs.includes('--all');
 const busList = busArgs.filter((a) => a !== '--all');
-// --tram feeds three rail cfgs here, told apart by the name itself: U… is the
-// U-Bahn, S… the S-Bahn, everything else (M1–M17, 12–99) a tram
+// --tram feeds four rail cfgs here, told apart by the name itself: U… is the
+// U-Bahn, S… the S-Bahn, RB/RE/FEX the regional trains, everything else
+// (M1–M17, 12–99, and the 1–6 of the three Brandenburg town networks) a tram
 const uSel = tramLines.filter((l) => /^U\d/.test(l));
 const sSel = tramLines.filter((l) => /^S\d/.test(l));
-const tramSel = tramLines.filter((l) => l !== 'all' && !/^[US]\d/.test(l));
+const rSel = tramLines.filter((l) => /^(RB|RE|FEX)/.test(l));
+const tramSel = tramLines.filter((l) => l !== 'all' && !/^[US]\d/.test(l) && !/^(RB|RE|FEX)/.test(l));
 
-// ONE feed for the whole Verbund, FOUR cfgs.
+// ONE feed for the whole Verbund, FIVE cfgs.
 //
-// VBB publishes a single GTFS for Berlin AND all of Brandenburg — 1254 lines
-// from Prenzlau to Cottbus, 30 000 km². The map is the metropolitan region,
-// so pipeline/scope.mjs precomputes the allowlist (data/scope.json): 30 km
-// around Alexanderplatz for buses and trams, everything U-Bahn, the S-Bahn
-// ring and its spokes. Route types are the extended German set — 700 and 3
-// both mean "bus" here, 900 tram, 400 U-Bahn, 109 S-Bahn.
+// VBB publishes a single GTFS for Berlin AND all of Brandenburg — 1255 lines
+// over 30 000 km². Until 8.09.2026 this map was the metropolitan region
+// (30 km around Alexanderplatz); it is now the Verbund itself, so
+// pipeline/scope.mjs no longer cuts by distance. What it still decides is in
+// data/scope.json: the route lists per mode, the Ersatzverkehr (buses an
+// operator numbers after its own rail line — BVG's bus "M2", DB Regio's bus
+// "RE2"; the discriminator is the agency, because Cottbus really does run
+// buses 12–37 next to its trams 1–4) and the LINE KEYS.
 //
-// Cut deliberately: the RB/RE regional trains (100 and 106 — a single RE to
-// Wittenberge would stretch the frame across the whole Land), the BVG
-// harbour ferries F10–F39 (1000; the engine has no water graph), and the
-// Ersatzverkehr — BVG runs rail-replacement buses under the REPLACED LINE'S
-// OWN NAME, so the feed carries buses called U6, S7, M1 and 12. They are the
-// same 15 keys the rail cfgs already own; Budapest's pótló and London's
-// "Replacement Service" set the rule, and here the discriminator is exactly
-// that name clash (a real Berlin bus is 100–399, M11–M85, X…, N…).
+// Route types are the extended German set — 700 and 3 both mean "bus" here,
+// 900 tram, 400 U-Bahn, 109 S-Bahn, 100 and 106 the RB/RE regional trains.
 //
-// LINE KEYS: nothing to invent — VBB numbers every line uniquely across the
-// Verbund, and the five numbers that do repeat in scope (662, 733, 825, 893,
-// N13) are ONE line published twice by two co-operating Brandenburg
-// operators, so they merge on the shared key by themselves.
+// Cut deliberately: the ferries (1000 — BVG's F10–F39 and Strausberg's F39;
+// the engine has no water graph).
+//
+// LINE KEYS: Verbund-wide the numbers are NOT unique — 197 of them are used
+// by two operators or more (Oder-Spree and the Uckermark both number their
+// county lines 4xx; trams 1–4 run in Cottbus, Frankfurt (Oder) AND Brandenburg
+// an der Havel). A shared number carries its operator's code in the KEY
+// (los:401, uvg:401, cb:1) and prints bare on the street through LBL; the
+// panel groups its chips by the same code. The Randstad rule.
 const LBL = new Map();
+const LINE_OP = new Map();   // line key → operator code (panel grouping)
 
-// The U-Bahn and S-Bahn colours come from the feed itself (VBB is one of the
-// few in this family that ships route_color), harvested below per line name:
-// several route rows exist per line and only some carry the colour — S1, S8
-// and S85 are blank on the row the reader happens to hit first. Trams stay
-// family red: colour means the MODE here, and Berlin's trams have no colour
-// standard of their own anyway.
+// The U-Bahn, S-Bahn and regional colours come from the feed itself (VBB is
+// one of the few in this family that ships route_color), harvested below per
+// line name: several route rows exist per line and only some carry the colour
+// — S1, S8 and S85 are blank on the row the reader happens to hit first.
+// Trams and buses stay family navy/red: colour means the MODE there.
 const ALL_ROUTES = await readCsv(join(ROOT, 'data/gtfs/routes.txt'));
 const BER_COLORS = {};
 for (const r of ALL_ROUTES) {
-  if (r.route_type !== '400' && r.route_type !== '109') continue;
+  if (!['400', '109', '100', '106'].includes(r.route_type)) continue;
   const k = (r.route_short_name || '').trim();
   if (!k || BER_COLORS[k]) continue;
   if (/^[0-9A-F]{6}$/i.test(r.route_color || '')) BER_COLORS[k] = '#' + r.route_color.toUpperCase();
@@ -164,8 +167,13 @@ for (const r of ALL_ROUTES) {
 // BVG's own map draws it as U1 green over U2 red, and a single ribbon has to
 // pick one: it keeps U1's green, the corridor it shares for most of its run.
 BER_COLORS.U12 ||= '#7DAD4C';
+// 16 of the 53 regional lines ship no colour: VBB's own network map paints
+// the RB lines that carry no house colour in the Verbund grey.
+const RAIL_GREY = '#5E5E5D';
 
-const isRailTrunk = (l) => l in BER_COLORS;
+// Metro treatment (wide ribbon, station discs, always-on names): the U-Bahn,
+// the S-Bahn and the regional trains — everything that is a train here.
+const isRailTrunk = (l) => l in BER_COLORS || /^(RB|RE|FEX)/.test(l);
 
 // the allowlist that IS the map's scope — build refuses to guess without it
 const SCOPE_FILE = join(ROOT, 'data/scope.json');
@@ -175,23 +183,20 @@ if (!existsSync(SCOPE_FILE)) {
 }
 const SCOPE = JSON.parse(readFileSync(SCOPE_FILE, 'utf8'));
 const S_BUS = new Set(SCOPE.bus), S_TRAM = new Set(SCOPE.tram),
-  S_UBAHN = new Set(SCOPE.ubahn), S_SBAHN = new Set(SCOPE.sbahn);
+  S_UBAHN = new Set(SCOPE.ubahn), S_SBAHN = new Set(SCOPE.sbahn),
+  S_RAIL = new Set(SCOPE.rail);
+const KEY = SCOPE.key || {}, OP = SCOPE.op || {};
 
-// Every line name that belongs to a RAIL line — a bus wearing one of these is
-// that line's Ersatzverkehr, never a bus line of its own (see the header).
-// Two sources: the names the three rail cfgs draw (trams, U-Bahn, S-Bahn), and
-// every RB/RE regional line in the feed. The regional names are taken whether
-// or not they are in scope, because RB/RE can never collide with a bus number;
-// the tram names are taken ONLY in scope, because Cottbus and Frankfurt (Oder)
-// number their trams 1–6 and a Brandenburg village bus 5 is a real bus.
-const RAIL_NAMES = new Set();
-for (const r of ALL_ROUTES) {
-  const inScope = S_TRAM.has(r.route_id) || S_UBAHN.has(r.route_id) || S_SBAHN.has(r.route_id);
-  if (inScope || r.route_type === '100' || r.route_type === '106') {
-    RAIL_NAMES.add((r.route_short_name || '').trim());
-  }
-}
-const isRailName = (sn) => RAIL_NAMES.has(sn);
+// The key a route draws under: its number, or `<operator>:<number>` where the
+// number belongs to several operators (scope.mjs decides which). The operator
+// code never reaches the street — LBL prints the bare number.
+const lineKey = (sn, r) => {
+  const k = KEY[r.route_id] || sn;
+  if (!k) return null;
+  if (k !== sn) LBL.set(k, sn);
+  if (OP[r.route_id]) LINE_OP.set(k, OP[r.route_id]);
+  return k;
+};
 
 // Stop names as the city signs them: VBB tags every Berlin pole "(Berlin)"
 // and writes the Brandenburg ones "Potsdam, Weinmeisterweg". On a Berlin map
@@ -210,29 +215,31 @@ const deBerlin = (n) => n
 
 const MODES = [{
   mode: 'bus', label: 'buses', graphMode: 'road',
-  // Berlin, Potsdam and the Speckgürtel — 5 × 5 tiles cut out of the Geofabrik
-  // extracts (see pipeline/pbf-tiles.py); merged at load, ways deduped by id
-  osmFiles: Array.from({ length: 25 }, (_, i) => `data/osm/tiles/t${i + 1}.json`),
+  // The whole Verbund — 8 × 8 tiles over 307 × 288 km cut out of nine
+  // Geofabrik extracts (see pipeline/pbf-tiles.py); merged at load, ways
+  // deduped by id
+  osmFiles: Array.from({ length: 64 }, (_, i) => `data/osm/tiles/t${i + 1}.json`),
   color: '#0059a9', colorDark: '#00294f',
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['100']),
   feeds: [
     { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['700', '3'],
-      skipRoute: (r) => !S_BUS.has(r.route_id) || isRailName((r.route_short_name || '').trim()),
-      mapKey: (sn) => sn || null, nameFix: deBerlin },
+      skipRoute: (r) => !S_BUS.has(r.route_id), mapKey: lineKey, nameFix: deBerlin },
   ],
 }];
 const tramAll = tramLines.length === 1 && tramLines[0] === 'all';
 if (tramAll || tramSel.length) MODES.push({
-  // BVG's M1–M17 and 12–68, Potsdam's 91–99, and the three surviving
-  // Brandenburg village lines the S-Bahn ends at: Woltersdorf (87),
-  // Schöneiche–Rüdersdorf (88) and Strausberg (89)
+  // Seven networks: BVG's M1–M17 and 12–68, Potsdam's 91–99, the three
+  // village lines the S-Bahn ends at — Woltersdorf (87), Schöneiche–
+  // Rüdersdorf (88), Strausberg (89) — and, since the map became the whole
+  // Verbund, Cottbus, Frankfurt (Oder) and Brandenburg an der Havel, which
+  // all number from 1 (hence the operator codes in the keys)
   mode: 'tram', label: 'trams', osmFile: 'data/osm/berlin-rail.json',
   graphMode: 'tram', railKeep: new Set(['tram']),
   color: '#d6212b', colorDark: '#7c1116',
   all: tramAll, lines: tramAll ? [] : tramSel,
   feeds: [
     { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['900'],
-      skipRoute: (r) => !S_TRAM.has(r.route_id), mapKey: (sn) => sn || null,
+      skipRoute: (r) => !S_TRAM.has(r.route_id), mapKey: lineKey,
       nameFix: deBerlin },
   ],
 });
@@ -246,7 +253,7 @@ if (tramAll || uSel.length) MODES.push({
     // corridor end to end, so the 245 stop-patterns the feed ships are pure
     // short-turns and the representative-variant rule draws each line whole
     { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['400'],
-      skipRoute: (r) => !S_UBAHN.has(r.route_id), mapKey: (sn) => sn || null,
+      skipRoute: (r) => !S_UBAHN.has(r.route_id), mapKey: lineKey,
       lineColor: (k) => BER_COLORS[k], nameFix: deBerlin },
   ],
 });
@@ -266,8 +273,32 @@ if (tramAll || sSel.length) MODES.push({
   all: tramAll, lines: tramAll ? [] : sSel,
   feeds: [
     { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['109'],
-      skipRoute: (r) => !S_SBAHN.has(r.route_id), mapKey: (sn) => sn || null,
+      skipRoute: (r) => !S_SBAHN.has(r.route_id), mapKey: lineKey,
       lineColor: (k) => BER_COLORS[k], nameFix: deBerlin },
+  ],
+});
+if (tramAll || rSel.length) MODES.push({
+  // The regional trains — 67 RB/RE lines plus the FEX airport express — are
+  // what makes the Verbund one network rather than a scatter of town systems,
+  // and they are the reason this map covers 30 000 km². They ride mainline
+  // rail, get the trunk treatment (allMetro) like the S-Bahn, and wear the
+  // colours VBB's own network map gives them; the 16 lines the feed leaves
+  // blank take the Verbund grey.
+  //
+  // They leave the Verbund too — the frame ends where they do: Stralsund and
+  // Schwerin in the north, Magdeburg and Leipzig in the west, Dresden and
+  // Görlitz in the south, Szczecin, Zielona Góra and Wrocław in the east —
+  // which is why pbf-tiles.py cuts rails from nine Geofabrik extracts, three
+  // of them Polish.
+  mode: 'tram', label: 'regional rail', osmFile: 'data/osm/berlin-rail.json',
+  graphMode: 'tram', railKeep: new Set(['rail']),
+  allMetro: true,
+  color: '#d6212b', colorDark: '#7c1116',
+  all: tramAll, lines: tramAll ? [] : rSel,
+  feeds: [
+    { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['100', '106'],
+      skipRoute: (r) => !S_RAIL.has(r.route_id), mapKey: lineKey,
+      lineColor: (k) => BER_COLORS[k] || RAIL_GREY, nameFix: deBerlin },
   ],
 });
 
@@ -1929,7 +1960,13 @@ writeFileSync(join(outDir, 'meta.json'), JSON.stringify({
   modes: MODES.map((m) => ({ mode: m.mode, label: m.label, color: m.color })),
   // the chips keep `line` as their value (selection matches keys) and print
   // `label` where the city's number differs from the pipeline's key
-  lines: metaLines.map((l) => (LBL.has(l.line) ? { ...l, label: LBL.get(l.line) } : l)),
+  // which operator runs a line — the panel groups its chip cloud by this,
+  // because Verbund-wide the same number belongs to several of them
+  ops: SCOPE.opName || {},
+  lines: metaLines.map((l) => ({
+    ...(LBL.has(l.line) ? { ...l, label: LBL.get(l.line) } : l),
+    ...(LINE_OP.has(l.line) ? { op: LINE_OP.get(l.line) } : {}),
+  })),
 }, null, 2));
 log(`Wrote data/out/{route,streets,labels,street-names,stops,badges,gtfs-shape}.geojson + meta.json`);
 
