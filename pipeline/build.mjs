@@ -1973,3 +1973,6 @@ log(`Wrote data/out/{route,streets,labels,street-names,stops,badges,gtfs-shape}.
 // Night lines print black, and sort last where the lists carry no rank
 // (user rule 8.09.2026): a post-pass over the written outputs, see night.mjs.
 await (await import('./night.mjs')).nightPass(outDir, /^N\d/, { sort: true });
+// …and a liveried line keeps its own colour in the number rows, even where it
+// shares a corridor with another one (user rule, 9.09.2026): see railrows.mjs.
+await (await import('./railrows.mjs')).railRowPass(outDir, /^N\d/, { log });
