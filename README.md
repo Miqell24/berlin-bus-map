@@ -108,11 +108,18 @@ chord IS a road OSM lacks and wrong where it crosses a mall or a park: Potsdam's
 walked every 25 m: three consecutive samples with no road but a driveway, a
 fire lane or a mall lane within 40 m (`svc` on the graph segment) mean the
 detour is the truth, and it is taken up to 4× the chord. 40 legs turned that
-way; the raw stretches of the bus network fell from 76 km to 46 km. What
-remains raw is mostly the Tiergartentunnel: M41 and M85 run Potsdamer Platz →
-Hauptbahnhof with no stop between, i.e. through the tunnel, and the line
-through the Spreebogen park is the tunnel's own alignment; the northbound
-bore's connection to Washingtonplatz routes 7.6× the chord and stays a chord.
+way; the raw stretches of the bus network fell from 76 km to 46 km. *The
+Tiergartentunnel* — M41 and M85 run Potsdamer Platz → Hauptbahnhof with no stop
+between, i.e. through the tunnel, but VBB digitised it on the surface, 30–100 m
+east of the bores, so the matcher snapped their points to the Kanzleramt's
+service roads and Straße des 17. Juni and the line broke at every junction
+along it. That is a feed error, repaired in the data (`shapeFix` on the bus
+mode, user rule): every shape point of the two lines inside the tunnel box is
+projected onto the nearest OSM way named "Tunnel Tiergarten Spreebogen" — the
+bores and the Bellevuestraße and Hauptbahnhof ramps alike. 98 points moved;
+M41's breaks went from 8 to 3 and its raw trace from 649 m to 60 m, and the
+Hauptbahnhof gap that used to be drawn as a chord across the Spree is now the
+ramp onto Invalidenstraße.
 `npm run serve` hosts the map at <http://localhost:8162>.
 
 Data: VBB — the whole Verkehrsverbund Berlin-Brandenburg ·

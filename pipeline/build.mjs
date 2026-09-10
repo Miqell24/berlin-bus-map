@@ -250,6 +250,15 @@ const MODES = [{
   // deduped by id
   osmFiles: Array.from({ length: 64 }, (_, i) => `data/osm/tiles/t${i + 1}.json`),
   color: '#0059a9', colorDark: '#00294f',
+  // Feed geometry repairs (user rule 10.09.2026: where the GTFS is wrong,
+  // repair the data so the line follows the street). VBB digitised the
+  // Tiergartentunnel on the surface, 30–100 m east of its bores: M41 and M85
+  // — which run Potsdamer Platz → Hauptbahnhof through it without a stop —
+  // snapped to the Kanzleramt's service roads and Straße des 17. Juni instead,
+  // and the line broke at every junction along it. Their shape points inside
+  // the box are projected onto the nearest way of that name — the bores and
+  // the ramps (Bellevuestraße and Hauptbahnhof) alike, both carry it.
+  shapeFix: [{ lines: ['M41', 'M85'], box: [52.5108, 52.5225, 13.3680, 13.3740], way: 'Tunnel Tiergarten Spreebogen' }],
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['100']),
   feeds: [
     { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['700', '3'],
@@ -455,6 +464,34 @@ function trimSpurs(coords, stopsXY, removed) {
     i = Math.max(-1, i - 1);
   }
   return out;
+}
+
+// Project the shape points of the named lines that fall inside a box onto the
+// nearest OSM way of the given name (see cfg.shapeFix). Returns points moved.
+function applyShapeFix(reps, elements, fixes, proj) {
+  let moved = 0;
+  for (const fx of fixes) {
+    const polys = elements
+      .filter((e) => e.type === 'way' && e.tags?.highway && e.tags?.name === fx.way && e.geometry)
+      .map((e) => e.geometry.map((g) => proj.toXY(g.lat, g.lon)));
+    if (!polys.length) { log(`shape fix: no way named "${fx.way}" in OSM — skipped`); continue; }
+    const [s, n, w, e] = fx.box;
+    for (const r of reps) {
+      if (!fx.lines.includes(bare(r.line)) || !r.shapeLatLon) continue;
+      r.shapeLatLon = r.shapeLatLon.map(([lat, lon]) => {
+        if (lat < s || lat > n || lon < w || lon > e) return [lat, lon];
+        const [x, y] = proj.toXY(lat, lon);
+        let best = null;
+        for (const P of polys) { const q = nearestOnPolyline(x, y, P); if (q && (!best || q.d < best.d)) best = q; }
+        if (!best) return [lat, lon];
+        moved++;
+        const [lon2, lat2] = proj.toLonLat(best.x, best.y);
+        return [lat2, lon2];
+      });
+    }
+    log(`shape fix "${fx.way}": ${moved} point(s) of ${fx.lines.join('/')} projected onto the way`);
+  }
+  return moved;
 }
 
 async function processMode(cfg) {
@@ -853,6 +890,7 @@ async function processMode(cfg) {
     const n = weldRailGaps(osm.elements);
     if (n) log(`welded ${n} dangling subway endpoints to nearby tracks`);
   }
+  if (cfg.shapeFix) applyShapeFix(reps, osm.elements, cfg.shapeFix, proj);
   const graph = buildGraph(osm.elements, proj, cfg.graphMode);
   log(`Graph (${cfg.graphMode}): ${graph.nodes.size} nodes, ${graph.segs.length} segments, ${graph.ways.size} ways`);
 
