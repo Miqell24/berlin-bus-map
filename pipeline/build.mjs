@@ -258,7 +258,10 @@ const MODES = [{
   // and the line broke at every junction along it. Their shape points inside
   // the box are projected onto the nearest way of that name — the bores and
   // the ramps (Bellevuestraße and Hauptbahnhof) alike, both carry it.
-  shapeFix: [{ lines: ['M41', 'M85'], box: [52.5108, 52.5225, 13.3680, 13.3740], way: 'Tunnel Tiergarten Spreebogen' }],
+  // The box runs from the Bellevuestraße ramp to the top of the Hauptbahnhof
+  // ramps (52.5262, where they meet Invalidenstraße); the points beyond keep
+  // VBB's surface geometry, which is right there.
+  shapeFix: [{ lines: ['M41', 'M85'], box: [52.5108, 52.5262, 13.3675, 13.3740], way: 'Tunnel Tiergarten Spreebogen' }],
   all: busAll, lines: busList.length ? busList : (busAll ? [] : ['100']),
   feeds: [
     { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['700', '3'],
@@ -471,18 +474,36 @@ function trimSpurs(coords, stopsXY, removed) {
 function applyShapeFix(reps, elements, fixes, proj) {
   let moved = 0;
   for (const fx of fixes) {
+    // A twin-bore tunnel is two oneway ways 12–20 m apart: a point projected
+    // onto the NEAREST bore lands on the wrong one every other time, and
+    // under a crossing street the right bore then drops out of the candidate
+    // list — the line broke and zigzagged between the bores at Straße des
+    // 17. Juni (user report). A oneway way only takes points whose travel
+    // direction (previous → next shape point) runs with it.
     const polys = elements
       .filter((e) => e.type === 'way' && e.tags?.highway && e.tags?.name === fx.way && e.geometry)
-      .map((e) => e.geometry.map((g) => proj.toXY(g.lat, g.lon)));
+      .map((e) => ({ P: e.geometry.map((g) => proj.toXY(g.lat, g.lon)), oneway: e.tags.oneway === 'yes' }));
     if (!polys.length) { log(`shape fix: no way named "${fx.way}" in OSM — skipped`); continue; }
     const [s, n, w, e] = fx.box;
     for (const r of reps) {
       if (!fx.lines.includes(bare(r.line)) || !r.shapeLatLon) continue;
-      r.shapeLatLon = r.shapeLatLon.map(([lat, lon]) => {
+      const pts = r.shapeLatLon;
+      r.shapeLatLon = pts.map(([lat, lon], i) => {
         if (lat < s || lat > n || lon < w || lon > e) return [lat, lon];
         const [x, y] = proj.toXY(lat, lon);
+        const [px, py] = proj.toXY(...pts[Math.max(0, i - 1)]);
+        const [nx, ny] = proj.toXY(...pts[Math.min(pts.length - 1, i + 1)]);
+        const tx = nx - px, ty = ny - py;
         let best = null;
-        for (const P of polys) { const q = nearestOnPolyline(x, y, P); if (q && (!best || q.d < best.d)) best = q; }
+        for (const { P, oneway } of polys) {
+          const q = nearestOnPolyline(x, y, P);
+          if (!q) continue;
+          if (oneway) {
+            const [ax, ay] = P[q.segIdx], [bx, by] = P[q.segIdx + 1];
+            if ((bx - ax) * tx + (by - ay) * ty < 0) continue;   // against the bore's direction
+          }
+          if (!best || q.d < best.d) best = q;
+        }
         if (!best) return [lat, lon];
         moved++;
         const [lon2, lat2] = proj.toLonLat(best.x, best.y);

@@ -116,10 +116,13 @@ service roads and Straße des 17. Juni and the line broke at every junction
 along it. That is a feed error, repaired in the data (`shapeFix` on the bus
 mode, user rule): every shape point of the two lines inside the tunnel box is
 projected onto the nearest OSM way named "Tunnel Tiergarten Spreebogen" — the
-bores and the Bellevuestraße and Hauptbahnhof ramps alike. 98 points moved;
-M41's breaks went from 8 to 3 and its raw trace from 649 m to 60 m, and the
-Hauptbahnhof gap that used to be drawn as a chord across the Spree is now the
-ramp onto Invalidenstraße.
+bores and the Bellevuestraße and Hauptbahnhof ramps alike — that runs WITH the
+point's direction of travel: the two bores are oneway and 12–20 m apart, and
+a point dropped on the wrong one broke the line and zigzagged it under Straße
+des 17. Juni. 130 points moved (Bellevuestraße ramp to the top of the
+Hauptbahnhof ramps); both lines now match with no break and no raw trace in
+either direction, and the Hauptbahnhof gap that used to be drawn as a chord
+across the Spree is the ramp onto Invalidenstraße.
 `npm run serve` hosts the map at <http://localhost:8162>.
 
 Data: VBB — the whole Verkehrsverbund Berlin-Brandenburg ·

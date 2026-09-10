@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T12:45:46.640Z",
+  "generatedAt": "2026-09-10T13:27:38.484Z",
   "maxSeparate": 4,
   "pitchRatio": 0.5,
   "palette": 106,
@@ -1130,11 +1130,11 @@
     "U9": "#0f959c"
   },
   "stats": {
-    "chains": 13410,
-    "bundles": 11679,
-    "strands": 206248,
+    "chains": 13408,
+    "bundles": 11677,
+    "strands": 206221,
     "corridors": 1731,
-    "rows": 90268,
+    "rows": 90267,
     "kmColoured": 28775,
     "kmGrey": 483
   }
