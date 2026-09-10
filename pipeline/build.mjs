@@ -28,6 +28,7 @@ const NAME_FIX = {};
 // the HMM bridges by routing instead of interpolating observations, which would
 // fabricate straight-line detours through side streets.
 const GAP_MIN = 300;
+const VERBOSE_SPURS = process.env.BUILD_SPUR_LOG === '1';
 // m — a pole closer than this to the matched axis is inside the track corridor:
 // its coordinate carries no usable side signal and the half-disc falls back to
 // the right-hand rule (see the stop pass). Named after the case that set it:
@@ -53,10 +54,16 @@ const keyParts = (s) => {
   const m = /^(\D*)(\d*)(.*)$/.exec(s);
   return [m[1], m[2] ? Number(m[2]) : Infinity, m[3]];
 };
-const numSort = (a, b) => {
+const cmpParts = (a, b) => {
   const A = keyParts(a), B = keyParts(b);
   return A[0].localeCompare(B[0]) || (A[1] - B[1]) || A[2].localeCompare(B[2]);
 };
+// …on the PRINTED number, with the key only as a tie-break. Sorting the raw
+// keys let the operator code decide the order: Frankfurt (Oder) numbers its
+// trams 1-5 but only 1-4 collide Verbund-wide, so the keys read `5`, `ffo:1`,
+// `ffo:2`… and every row there came out "5, 2" or "5, 1, 3, 4". Same for the
+// S-Bahn — `sbahn:S1` sorted behind S2 — and for `hanse:RB33` behind RB34.
+const numSort = (a, b) => cmpParts(bare(a), bare(b)) || cmpParts(a, b);
 function round6(v) { return Math.round(v * 1e6) / 1e6; }
 // dark variant for feed-supplied line colors (badge rims / terminus fills)
 function darken(hex, f) {
@@ -150,31 +157,6 @@ const tramSel = tramLines.filter((l) => l !== 'all' && !/^[US]\d/.test(l) && !/^
 const LBL = new Map();
 const LINE_OP = new Map();   // line key → operator code (panel grouping)
 
-// The U-Bahn, S-Bahn and regional colours come from the feed itself (VBB is
-// one of the few in this family that ships route_color), harvested below per
-// line name: several route rows exist per line and only some carry the colour
-// — S1, S8 and S85 are blank on the row the reader happens to hit first.
-// Trams and buses stay family navy/red: colour means the MODE there.
-const ALL_ROUTES = await readCsv(join(ROOT, 'data/gtfs/routes.txt'));
-const BER_COLORS = {};
-for (const r of ALL_ROUTES) {
-  if (!['400', '109', '100', '106'].includes(r.route_type)) continue;
-  const k = (r.route_short_name || '').trim();
-  if (!k || BER_COLORS[k]) continue;
-  if (/^[0-9A-F]{6}$/i.test(r.route_color || '')) BER_COLORS[k] = '#' + r.route_color.toUpperCase();
-}
-// U12 is the weekend U1×U2 through service and the feed leaves it blank —
-// BVG's own map draws it as U1 green over U2 red, and a single ribbon has to
-// pick one: it keeps U1's green, the corridor it shares for most of its run.
-BER_COLORS.U12 ||= '#7DAD4C';
-// 16 of the 53 regional lines ship no colour: VBB's own network map paints
-// the RB lines that carry no house colour in the Verbund grey.
-const RAIL_GREY = '#5E5E5D';
-
-// Metro treatment (wide ribbon, station discs, always-on names): the U-Bahn,
-// the S-Bahn and the regional trains — everything that is a train here.
-const isRailTrunk = (l) => l in BER_COLORS || /^(RB|RE|FEX)/.test(l);
-
 // the allowlist that IS the map's scope — build refuses to guess without it
 const SCOPE_FILE = join(ROOT, 'data/scope.json');
 if (!existsSync(SCOPE_FILE)) {
@@ -186,6 +168,54 @@ const S_BUS = new Set(SCOPE.bus), S_TRAM = new Set(SCOPE.tram),
   S_UBAHN = new Set(SCOPE.ubahn), S_SBAHN = new Set(SCOPE.sbahn),
   S_RAIL = new Set(SCOPE.rail);
 const KEY = SCOPE.key || {}, OP = SCOPE.op || {};
+
+// The U-Bahn, S-Bahn and regional colours come from the feed itself (VBB is
+// one of the few in this family that ships route_color), harvested below per
+// line: several route rows exist per line and only some carry the colour —
+// S1, S8 and S85 are blank on the row the reader happens to hit first.
+// Trams and buses stay family navy/red: colour means the MODE there.
+//
+// Harvested under the LINE KEY, not the bare number. Two of the Verbund's
+// S-lines are somebody else's S-Bahn — DB Regio's S1 Wittenberge–Stendal–
+// Schönebeck (S-Bahn Mittelelbe) and its S4 Leipzig–Oschatz — so "S1" belongs
+// to two operators and scope.mjs keys them apart (sbahn:S1, db:S1). Keying the
+// palette by the bare number instead cost Berlin's own S1 its pink: the lookup
+// missed, the line fell through to the mode colour, and every corridor it
+// shares went TRAM RED with it — the whole Nordbahn, S1+S2+S25+S26.
+const ALL_ROUTES = await readCsv(join(ROOT, 'data/gtfs/routes.txt'));
+const BER_COLORS = {};
+for (const r of ALL_ROUTES) {
+  if (!['400', '109', '100', '106'].includes(r.route_type)) continue;
+  const sn = (r.route_short_name || '').trim();
+  if (!sn) continue;
+  const k = KEY[r.route_id] || sn;
+  if (k !== sn) LBL.set(k, sn);
+  if (BER_COLORS[k]) continue;
+  if (/^[0-9A-F]{6}$/i.test(r.route_color || '')) BER_COLORS[k] = '#' + r.route_color.toUpperCase();
+}
+// U12 is the weekend U1×U2 through service and the feed leaves it blank —
+// BVG's own map draws it as U1 green over U2 red, and a single ribbon has to
+// pick one: it keeps U1's green, the corridor it shares for most of its run.
+BER_COLORS.U12 ||= '#7DAD4C';
+// 16 of the 53 regional lines ship no colour: VBB's own network map paints
+// the RB lines that carry no house colour in the Verbund grey. The two
+// foreign S-Bahn lines take it too — they are outside Berlin's livery, and
+// the family rule is that an operator's colours are worn only where that
+// operator publishes a COMPLETE set.
+const RAIL_GREY = '#5E5E5D';
+
+// The number as the street sees it: a key carries an operator code wherever
+// the Verbund reuses a number (los:401, ffo:2, sbahn:S1), the printed label
+// never does. Everything that reads a line AS TEXT — the colour table, the
+// rail test, the sort — has to look through the code, not at it.
+const bare = (k) => LBL.get(k) || k;
+
+// Metro treatment (wide ribbon, station discs, always-on names): the U-Bahn,
+// the S-Bahn and the regional trains — everything that is a train here.
+// Colour alone cannot decide it: the two foreign S-Bahn lines and 16 of the
+// RB lines ship none, and an S-Bahn drawn as a tram is exactly what the
+// reader must not see.
+const isRailTrunk = (l) => l in BER_COLORS || /^(U\d|S\d|RB|RE|FEX)/.test(bare(l));
 
 // The key a route draws under: its number, or `<operator>:<number>` where the
 // number belongs to several operators (scope.mjs decides which). The operator
@@ -274,7 +304,7 @@ if (tramAll || sSel.length) MODES.push({
   feeds: [
     { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['109'],
       skipRoute: (r) => !S_SBAHN.has(r.route_id), mapKey: lineKey,
-      lineColor: (k) => BER_COLORS[k], nameFix: deBerlin },
+      lineColor: (k) => BER_COLORS[k] || RAIL_GREY, nameFix: deBerlin },
   ],
 });
 if (tramAll || rSel.length) MODES.push({
@@ -359,6 +389,72 @@ function mergeRuns(all) {
     }
   }
   return merged;
+}
+
+// Segment index for a matched path: the graph segment each consecutive pair of
+// path vertices IS, looked up on rounded coordinates (the path is built out of
+// graph nodes, so the pairs match exactly).
+function pairIndex(graph) {
+  if (graph._pairIdx) return graph._pairIdx;
+  const m = new Map();
+  const k = (x1, y1, x2, y2) => `${x1.toFixed(1)}|${y1.toFixed(1)}|${x2.toFixed(1)}|${y2.toFixed(1)}`;
+  graph.segs.forEach((g, i) => {
+    m.set(k(g.ax, g.ay, g.bx, g.by), i);
+    m.set(k(g.bx, g.by, g.ax, g.ay), i);
+  });
+  graph._pairIdx = m;
+  return m;
+}
+function segsOfPath(graph, coords) {
+  const idx = pairIndex(graph);
+  const k = (x1, y1, x2, y2) => `${x1.toFixed(1)}|${y1.toFixed(1)}|${x2.toFixed(1)}|${y2.toFixed(1)}`;
+  const out = new Set();
+  for (let i = 0; i + 1 < coords.length; i++) {
+    const si = idx.get(k(coords[i][0], coords[i][1], coords[i + 1][0], coords[i + 1][1]));
+    if (si !== undefined) out.add(si);
+  }
+  return out;
+}
+
+// Out-and-back stubs — the "ogonki". A matched path that leaves the corridor,
+// touches a point and comes straight back along the same segments is almost
+// never a service pattern: it is the matcher reaching for an observation that
+// sits off the carriageway. VBB's bus shapes invite it, because outside the
+// city they are stop-to-stop sketches — 247's whole Gartenplatz block is five
+// shape points — so the drawing between poles is routing, and every pole the
+// route passes on the far side of a junction pulls a stub out of it.
+//
+// m of detour; a longer one is a service pattern. Naples caps this at 120,
+// Belgrade needs 300 and so does the Verbund: its county lines detour deep
+// into villages, and those excursions all serve a stop, which protects them.
+const SPUR_MAX = 300;
+const SPUR_STOP = 30;    // m — how close a stop must be to count as served
+const SPUR_WIN = 40;     // points to look ahead for the return to a visited point
+function trimSpurs(coords, stopsXY, removed) {
+  const same = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]) < 0.5;
+  const pathDist = (p, line) => (line.length > 1 ? nearestOnPolyline(p[0], p[1], line).d : Infinity);
+  let out = coords.slice();
+  for (let i = 0; i + 2 < out.length; i++) {
+    let j = -1;
+    for (let k = Math.min(i + SPUR_WIN, out.length - 1); k > i + 1; k--) {
+      if (same(out[i], out[k])) { j = k; break; }
+    }
+    if (j < 0) continue;
+    let len = 0;
+    for (let t = i; t < j; t++) len += Math.hypot(out[t + 1][0] - out[t][0], out[t + 1][1] - out[t][1]);
+    if (len > 2 * SPUR_MAX) continue;                      // out and back = twice the detour
+    const spur = out.slice(i, j + 1);
+    const rest = [...out.slice(0, i + 1), ...out.slice(j)];
+    const serves = stopsXY.some((st) => {
+      const ds = pathDist(st, spur.slice(1, -1).length ? spur : []);
+      return ds < SPUR_STOP && ds < pathDist(st, rest) - 10;
+    });
+    if (serves) continue;
+    removed.push(spur);
+    out = rest;
+    i = Math.max(-1, i - 1);
+  }
+  return out;
 }
 
 async function processMode(cfg) {
@@ -767,6 +863,9 @@ async function processMode(cfg) {
   // past U-turn tips / route ends)
   const segIv = new Map();
   const rawRunsAll = [];
+  // 2280 runs in the Verbund — one line per trim would drown the log, so the
+  // per-run detail is opt-in (BUILD_SPUR_LOG=1) and the mode reports a total
+  let spurTrims = 0, spurStubs = 0, chordRescued = 0;
   for (const r of reps) {
     const xy = r.shapeLatLon.map(([lat, lon]) => proj.toXY(lat, lon));
     let sampled, opts;
@@ -812,9 +911,65 @@ async function processMode(cfg) {
     if (ext) log(`  terminal repair ${r.line}/${r.dir}: ` +
       `${ext.head ? `${ext.head} stop(s) before the shape (+${ext.startM} m) ` : ''}` +
       `${ext.tail ? `${ext.tail} stop(s) past the shape (+${ext.endM} m)` : ''}`);
+    // cut the out-and-back stubs before anything downstream sees them: the
+    // stroke layer, the number rows and the length all come off these
+    const spurs = [];
+    const trimmed = trimSpurs(res.coords, stopsXY, spurs);
+    if (spurs.length) {
+      res.coords = trimmed;
+      // a segment travelled ONLY inside a cut excursion leaves the streets layer
+      // too — otherwise the tail stays drawn although the line no longer runs
+      // there. Segments the trimmed path still uses are never touched, so a
+      // corridor can never be broken open by this.
+      const kept = segsOfPath(graph, trimmed);
+      let dropped = 0;
+      for (const sp of spurs) {
+        for (const si of segsOfPath(graph, sp)) {
+          if (!kept.has(si) && res.usedSegs.delete(si)) { res.usedIv.delete(si); dropped++; }
+        }
+      }
+      // …and a geometric sweep behind it. The index lookup above only finds a
+      // segment when the excursion's vertices ARE graph nodes, which silently
+      // fails for a spur that runs inside one segment or over vertices the
+      // terminal repair inserted. So every segment still marked used is
+      // re-checked against the FINAL path: its ridden interval (usedIv — a
+      // partly ridden segment is a run end or a bridge entry) must lie ON the
+      // trimmed path, both ends and the middle within 5 m. A segment the line
+      // still travels sits at 0 m from it (the path is built of graph nodes),
+      // so a corridor can never be broken open by this; a stub's far end is
+      // metres away and goes. The family's earlier rule — midpoint within
+      // 40 m — let every stub under ~80 m survive in the streets layer: the
+      // Stern-Center frame kept seven of them with no line path near any
+      // (user report, 10.09.2026).
+      const COVER = 5;
+      const covered = (si) => {
+        const g = graph.segs[si];
+        const iv = res.usedIv.get(si) || [0, 1];
+        for (const t of [iv[0], (iv[0] + iv[1]) / 2, iv[1]]) {
+          const x = g.ax + (g.bx - g.ax) * t, y = g.ay + (g.by - g.ay) * t;
+          if (nearestOnPolyline(x, y, trimmed).d > COVER) return false;
+        }
+        return true;
+      };
+      let swept = 0;
+      for (const si of [...res.usedSegs]) {
+        if (!covered(si)) { res.usedSegs.delete(si); res.usedIv.delete(si); swept++; }
+      }
+      spurTrims++; spurStubs += spurs.length;
+      if (VERBOSE_SPURS) {
+        log(`  spur trim ${r.line}/${r.dir}: ${spurs.length} dead-end stub(s), ` +
+          `${dropped} segment(s) dropped${swept ? `, ${swept} swept by distance` : ''}`);
+        for (const sp of spurs) {
+          const tip = sp[Math.floor(sp.length / 2)];
+          const [lon, lat] = proj.toLonLat(tip[0], tip[1]);
+          log(`    stub ${Math.round(polylineLength(sp))} m @ ${lat.toFixed(5)},${lon.toFixed(5)}`);
+        }
+      }
+    }
     r.matchedXY = res.coords;
     r.usedSegs = res.usedSegs;
     r.stats = res.stats;
+    chordRescued += res.stats.chordRescues || 0;
     r.lengthKm = polylineLength(res.coords) / 1000;
     for (const si of res.usedSegs) {
       let set = segLines.get(si);
@@ -851,6 +1006,9 @@ async function processMode(cfg) {
       log(`  BREAK ${r.line}/${r.dir} @ ${lat.toFixed(5)},${lon.toFixed(5)}`);
     }
   }
+  if (spurTrims) log(`spur trim: ${spurStubs} dead-end stub(s) cut from ${spurTrims} run(s)` +
+    `${VERBOSE_SPURS ? '' : ' — BUILD_SPUR_LOG=1 for the per-run detail'}`);
+  if (chordRescued) log(`gap legs: ${chordRescued} refused bridge(s) taken after all — the chord had left the road network`);
   reps = reps.filter((r) => r.matchedXY);
 
   // Trams take the IDENTICAL path as buses: we draw every traversed segment of
@@ -1284,6 +1442,9 @@ async function processMode(cfg) {
   const metaLines = [...new Set(reps.map((r) => r.line))].sort(numSort).map((L) => ({
     line: L,
     mode: cfg.mode,
+    // the panel files a chip by this: without it every train sat under
+    // "Trams" — the U-Bahn, the S-Bahn and the RE alike (user report 10.09.2026)
+    ...(cfg.mode === 'tram' && isRailTrunk(L) ? { metro: 1 } : {}),
     color: colorOf([L]),
     dirs: reps.filter((r) => r.line === L).map((r) => ({
       dir: r.dir, headsign: r.headsign, variants: r.variants, tripCount: r.tripCount,

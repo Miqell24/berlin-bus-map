@@ -45,7 +45,11 @@ const nk = (c) => c[0].toFixed(6) + ',' + c[1].toFixed(6);
 
 // line numbers sort like a timetable, not like strings (build.mjs convention)
 const keyParts = (s) => { const m = /^(\D*)(\d*)(.*)$/.exec(s); return [m[1], m[2] ? Number(m[2]) : Infinity, m[3]]; };
-const numSort = (a, b) => { const A = keyParts(a), B = keyParts(b); return A[0].localeCompare(B[0]) || (A[1] - B[1]) || A[2].localeCompare(B[2]); };
+const cmpParts = (a, b) => { const A = keyParts(a), B = keyParts(b); return A[0].localeCompare(B[0]) || (A[1] - B[1]) || A[2].localeCompare(B[2]); };
+// …on the PRINTED number (LBL, read from meta below), the key only as a
+// tie-break — otherwise the operator code in a key decides the order and
+// Frankfurt (Oder)'s trams read "5, 2" (keys `5`, `ffo:2`; build.mjs rule)
+const numSort = (a, b) => cmpParts(LBL.get(a) || a, LBL.get(b) || b) || cmpParts(a, b);
 
 // ---------- colour: CIE-Lab, so "different enough" is a measurable distance ----------
 function lab2rgb(L, a, b) {

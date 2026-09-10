@@ -120,6 +120,34 @@ function appendCoords(coords, extra) {
 // Points with no roadway within ~70 m stay unassigned — if GTFS drives a road that
 // is missing from OSM (new infrastructure), it is better to draw the raw trace than
 // to pull the route onto random nearby streets (see the fallback in reconstruction).
+// A refused gap-leg bridge falls back to the raw chord. That is right when the
+// chord IS a road OSM lacks — El Kafr: the unmapped eastbound carriageway runs
+// 20 m from the mapped westbound one the whole way — and wrong when the chord
+// crosses a mall, a park, a river: Potsdam's 694 leaves its terminus with a
+// 543 m chord straight through the Stern-Center, the 1269 m bus loop around
+// it refused at 2.34×. The chord itself tells the two apart: walked every
+// CHORD_STEP m, a real road keeps a graph segment within CHORD_R the whole
+// way, while CHORD_RUN consecutive samples with nothing drivable near them
+// (≥ 75 m of fiction) mean the detour is the truth. Service roads without a
+// bus exemption do not count as road here: the Stern-Center chord had a
+// driveway, a fire lane or a mall lane within 40 m at every sample and still
+// crossed nothing a bus drives.
+const CHORD_STEP = 25, CHORD_R = 40, CHORD_RUN = 3;
+function chordOffRoad(graph, A, B) {
+  const L = Math.hypot(B.x - A.x, B.y - A.y);
+  const n = Math.floor(L / CHORD_STEP);
+  let run = 0;
+  for (let k = 1; k < n; k++) {
+    const t = k / n;
+    const near = candidates(graph, A.x + (B.x - A.x) * t, A.y + (B.y - A.y) * t, CHORD_R, 12);
+    const off = !near.some((c) => !graph.segs[c.segIdx].svc);
+    run = off ? run + 1 : 0;
+    if (run >= CHORD_RUN) return true;
+  }
+  return false;
+}
+const GAP_LOG = process.env.BUILD_GAP_LOG === '1';
+
 export function matchShape(graph, pts, opts = {}) {
   const sigma = opts.sigma ?? 8;
   const beta = opts.beta ?? 32;
@@ -214,7 +242,7 @@ export function matchShape(graph, pts, opts = {}) {
     }
   };
   const rawStretches = [];
-  let bridged = 0, rawFallbacks = 0, rawMeters = 0, sumDist = 0;
+  let bridged = 0, rawFallbacks = 0, rawMeters = 0, sumDist = 0, chordRescues = 0;
 
   for (let i = 1; i < N; i++) {
     const A = obs[i - 1], B = obs[i];
@@ -240,9 +268,24 @@ export function matchShape(graph, pts, opts = {}) {
     // legitimately target a frontage street whose only graph entry lies around
     // the block (unstitched parallel ways are routine in OSM) — X499 at El
     // Kafr drew an 850 m rectangle over a 340 m straight corridor.
-    const wildDetour = conn && (
+    let wildDetour = conn && (
       ((isBreak || spansSkipped) && conn.d > Math.max(rawLen * 2.5, rawLen + 150)) ||
       (noPen && conn.d > Math.max(rawLen * 2.2, rawLen + 150)));
+    // …unless the chord it would fall back to leaves the road network — then
+    // the detour is taken after all, within a sanity cap (see chordOffRoad)
+    let rescued = false;
+    if (wildDetour && noPen && conn.d <= Math.max(rawLen * 4, rawLen + 1500) && chordOffRoad(graph, A, B)) {
+      wildDetour = false; rescued = true; chordRescues++;
+    }
+    // BUILD_GAP_LOG=1: one line per shape-gap leg — the chord, what routing
+    // found, and the verdict — so a raw chord through a block can be traced
+    // to "no route" or "route refused as a wild detour" without guessing
+    if (GAP_LOG && (noPen || isBreak)) {
+      console.log(`    gap-leg ${i}: chord ${Math.round(Math.hypot(B.x - A.x, B.y - A.y))} m, raw ${Math.round(rawLen)} m, ` +
+        (conn ? `routed ${Math.round(conn.d)} m (${(conn.d / Math.max(1, rawLen)).toFixed(2)}x)` : 'NO ROUTE') +
+        `${isBreak ? ', break' : ''}${noPen ? ', gap' : ''}` +
+        `${rescued ? ' -> chord off-road, detour TAKEN' : wildDetour ? ' -> REFUSED, raw trace' : conn ? ' -> bridged' : ' -> raw trace'}`);
+    }
     if (conn && !wildDetour) {
       appendCoords(coords, conn.coords);
       if (conn.nodesPath) {
@@ -296,6 +339,7 @@ export function matchShape(graph, pts, opts = {}) {
       viterbiBreaks: breaks.size,
       bridged: bridged,
       rawStretchCount: rawFallbacks,
+      chordRescues,
       rawMeters: Math.round(rawMeters),
       meanError: N > 1 ? sumDist / (N - 1) : 0,
       roundaboutSegs: roundaboutSegs,

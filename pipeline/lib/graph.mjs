@@ -74,7 +74,11 @@ function wayAccess(tags) {
   }
   const noAccess = tags.access === 'no' || tags.access === 'private';
   const noMotor = tags.motor_vehicle === 'no' || tags.motor_vehicle === 'private';
-  return { restricted: !psv && (noAccess || noMotor), driveway };
+  // svc: a service road with no bus exemption — driveways, delivery yards,
+  // emergency accesses, the lanes of a mall. In the graph (a bus does use
+  // them now and then) but not a road a GTFS chord can be said to FOLLOW;
+  // the chord-vs-road test in hmm.mjs looks through them.
+  return { restricted: !psv && (noAccess || noMotor), driveway, svc: tags.highway === 'service' && !psv };
 }
 
 function wayDirections(tags) {
@@ -132,7 +136,7 @@ export function buildGraph(elements, proj, mode = 'road') {
       const idx = segs.length;
       segs.push({
         idx, a, b, ax: na.x, ay: na.y, bx: nb.x, by: nb.y, len,
-        wayId: el.id, wayPos: i, name, roundabout: rb, fwdPen, bwdPen, pen: base,
+        wayId: el.id, wayPos: i, name, roundabout: rb, fwdPen, bwdPen, pen: base, svc: !!acc.svc,
       });
       // edge cost = length × penalty (geometry stays true)
       if (isFinite(fwdPen)) { pushOut(a, { to: b, segIdx: idx, len: len * fwdPen }); segByNodes.set(a + '|' + b, idx); }
