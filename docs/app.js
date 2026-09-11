@@ -230,7 +230,7 @@ async function init() {
   // Two chips can read the same now, so each carries its terminals as a
   // tooltip; data-line stays the key, which is what selection matches on.
   const chipHtml = (l, bg, active) => {
-    const hs = (l.dirs || []).map((d) => d.headsign).filter(Boolean);
+    const hs = [...new Set((l.dirs || []).map((d) => d.headsign).filter(Boolean))];
     const tip = hs.length ? `${disp(l.line) !== l.line ? l.line + ' — ' : ''}${hs.join(' ↔ ')}` : '';
     return `<button class="chip${active ? ' active' : ''}" ` +
       `data-line="${esc(l.line)}" data-mode="${esc(l.mode)}"${tip ? ` title="${esc(tip)}"` : ''} ` +

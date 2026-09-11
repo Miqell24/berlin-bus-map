@@ -55737,7 +55737,7 @@
       "dirs": [
         {
           "dir": "0",
-          "headsign": "",
+          "headsign": "Gubin (PL), Bahnhof",
           "variants": 2,
           "tripCount": 10,
           "stops": 10,
@@ -55812,7 +55812,7 @@
         },
         {
           "dir": "1",
-          "headsign": "",
+          "headsign": "Forst (Gr)",
           "variants": 4,
           "tripCount": 2,
           "stops": 21,
