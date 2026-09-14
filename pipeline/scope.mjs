@@ -14,8 +14,9 @@
 //    S-Bahn Berlin's bus S3, DB Regio's bus RE2). Cottbusverkehr's buses 12,
 //    16, 18, 21, 27 and 37 are real buses — Cottbus trams are 1–4 — and the
 //    old Verbund-wide name list would have swallowed all six.
-//  * Ferries (route_type 1000): BVG's F10–F39 and Strausberg's F39 — the
-//    engine has no water graph.
+//  * Ferries (route_type 1000): BVG's F10–F24 and Strausberg's F39 ride a
+//    mode of their own since 14.09.2026, on the water courses
+//    pipeline/ferries.mjs routes through the rivers and lakes.
 //  * LINE KEYS. Verbund-wide the numbers are NOT unique: 184 bus numbers are
 //    used by two operators or more (Oder-Spree and the Uckermark both number
 //    their county lines 4xx), and trams 1–4 run in Cottbus, Frankfurt (Oder)
@@ -42,7 +43,8 @@ const kindOf = (t) => (t === '700' || t === '3' ? 'bus'
   : t === '900' ? 'tram'
     : t === '109' ? 'sbahn'
       : t === '400' ? 'ubahn'
-        : t === '100' || t === '106' ? 'rail' : null);
+        : t === '100' || t === '106' ? 'rail'
+          : t === '1000' ? 'ferry' : null);
 
 // Operator code for the key prefix and the panel grouping. Built from the
 // agency name: the words that carry the identity, lowercased — "Busverkehr
@@ -100,15 +102,15 @@ for (const r of routes) {
 }
 
 const kept = [];
-let ersatz = 0, ferry = 0;
+let ersatz = 0, other = 0;
 for (const r of routes) {
   const kind = kindOf(r.route_type);
-  if (!kind) { ferry++; continue; }
+  if (!kind) { other++; continue; }
   const sn = (r.route_short_name || '').trim();
   if (kind === 'bus' && railPairs.has(r.agency_id + '\u0000' + sn)) { ersatz++; continue; }
   kept.push({ r, kind, sn });
 }
-log(`z ${routes.length} tras: ${kept.length} na mapę, ${ersatz} Ersatzverkehr, ${ferry} promów`);
+log(`z ${routes.length} tras: ${kept.length} na mapę, ${ersatz} Ersatzverkehr, ${other} innych typów`);
 
 // which names need an operator code: the same printed number run by more than
 // one operator. Trams and buses share the pool — a Cottbus tram 1 and a
@@ -131,16 +133,16 @@ for (const [id, name] of agencies) {
   if (!opName[code] || short.length < opName[code].length) opName[code] = short;
 }
 
-const out = { bus: [], tram: [], sbahn: [], ubahn: [], rail: [], key: {}, op: {}, opName };
+const out = { bus: [], tram: [], sbahn: [], ubahn: [], rail: [], ferry: [], key: {}, op: {}, opName };
 for (const { r, kind, sn } of kept) {
   out[kind].push(r.route_id);
   const op = opCode.get(r.agency_id);
   out.key[r.route_id] = shared.has(sn) ? `${op}:${sn}` : sn;
   out.op[r.route_id] = op;
 }
-for (const k of ['bus', 'tram', 'sbahn', 'ubahn', 'rail']) out[k].sort();
+for (const k of ['bus', 'tram', 'sbahn', 'ubahn', 'rail', 'ferry']) out[k].sort();
 log(`bus ${out.bus.length}, tram ${out.tram.length}, S-Bahn ${out.sbahn.length}, `
-  + `U-Bahn ${out.ubahn.length}, kolej regionalna ${out.rail.length}`);
+  + `U-Bahn ${out.ubahn.length}, kolej regionalna ${out.rail.length}, promy ${out.ferry.length}`);
 
 // The frame the OSM cut has to cover: the stop extent per graph (roads carry
 // the buses, rails everything else). Printed so pbf-tiles.py can be checked
@@ -157,15 +159,21 @@ for await (const s of iterCsv(join(GD, 'stops.txt'))) {
   if (Number.isFinite(lat) && Number.isFinite(lon)) stops.set(s.stop_id, [lat, lon]);
 }
 const box = { road: [90, -90, 180, -180], rail: [90, -90, 180, -180] };
+// the ferries ride water, not the road or rail cut: one box per ferry line
+// instead, which pipeline/water-cut.py grows by a margin and cuts the rivers
+// and lakes out of
+const ferryBox = {};
 for await (const st of iterCsv(join(GD, 'stop_times.txt'))) {
   const rid = t2r.get(st.trip_id);
   const p = stops.get(st.stop_id);
   if (!rid || !p) continue;
-  const b = box[wanted.get(rid) === 'bus' ? 'road' : 'rail'];
+  const b = wanted.get(rid) === 'ferry' ? (ferryBox[rid] ||= [90, -90, 180, -180])
+    : box[wanted.get(rid) === 'bus' ? 'road' : 'rail'];
   if (p[0] < b[0]) b[0] = p[0]; if (p[0] > b[1]) b[1] = p[0];
   if (p[1] < b[2]) b[2] = p[1]; if (p[1] > b[3]) b[3] = p[1];
 }
 out.bbox = box;
+out.ferryBox = ferryBox;
 for (const k of ['road', 'rail']) {
   const b = box[k];
   log(`zasięg ${k}: ${b[0].toFixed(2)}–${b[1].toFixed(2)} N, ${b[2].toFixed(2)}–${b[3].toFixed(2)} E`);

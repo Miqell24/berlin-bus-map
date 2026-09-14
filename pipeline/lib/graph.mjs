@@ -22,6 +22,14 @@ const PEN_DRIVEWAY = 4;    // service=driveway — sometimes a mistag of a real 
 // an alternative further than ~12 m, while still damping accidental wrong-way shortcuts.
 const PEN_CONTRAFLOW = 2.5;
 
+// Ferry mode: the graph is the WATER — synthetic route=ferry ways written by
+// pipeline/ferries.mjs (courses routed through the rivers and lakes), no
+// direction, no penalties. Nothing else is a waterway.
+function ferryAccess(tags) {
+  if (!tags || tags.route !== 'ferry') return null;
+  return { restricted: false, driveway: false };
+}
+
 // Rail mode (STASY): graph built from tracks — metro tunnels (railway=subway),
 // tram tracks and surface rail (parts of M1 run in a rail-tagged corridor; plain
 // rail also brings the suburban railway, which is harmless — Viterbi consistency
@@ -106,7 +114,7 @@ export function buildGraph(elements, proj, mode = 'road') {
 
   for (const el of elements) {
     if (el.type !== 'way') continue;
-    const acc = mode === 'tram' ? tramAccess(el.tags) : wayAccess(el.tags);
+    const acc = mode === 'tram' ? tramAccess(el.tags) : mode === 'ferry' ? ferryAccess(el.tags) : wayAccess(el.tags);
     if (!acc) continue;
     const ids = el.nodes, geo = el.geometry;
     if (!ids || !geo || ids.length !== geo.length || ids.length < 2) continue;

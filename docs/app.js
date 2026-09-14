@@ -8,6 +8,10 @@ const TROLLEY_GREEN = '#149a3f';
 // a hue there or it competes with a strand for the same meaning.
 const STOP_INK = '#464c55';
 const MLINE_YELLOW = '#e8a000';
+// the ferries (mode 'ferry'): purple, dashed — keep in sync with
+// FERRY_PURPLE/FERRY_DARK in pipeline/build.mjs
+const FERRY_PURPLE = '#7b2ca8';
+const FERRY_DARK = '#4a1668';
 // Narrow label face. Arial Narrow itself cannot be used: MapLibre text comes from
 // pre-rendered glyph PBFs on a font server, and no server hosts that licensed
 // font — Roboto Condensed is the hosted narrow equivalent (with Greek coverage).
@@ -218,9 +222,9 @@ async function init() {
   const isS = (l) => l.mode === 'tram' && /^S\d/.test(l.line);
   const isR = (l) => l.mode === 'tram' && /^(RB|RE|FEX)/.test(l.line);
   const nU = meta.lines.filter(isU).length, nS = meta.lines.filter(isS).length,
-    nR = meta.lines.filter(isR).length;
+    nR = meta.lines.filter(isR).length, nF = meta.lines.filter((l) => l.mode === 'ferry').length;
   document.getElementById('count').textContent =
-    `(${nBus} bus · ${nTram - nU - nS - nR} tram · ${nU} U-Bahn · ${nS} S-Bahn · ${nR} regional)`;
+    `(${nBus} bus · ${nTram - nU - nS - nR} tram · ${nU} U-Bahn · ${nS} S-Bahn · ${nR} regional${nF ? ` · ${nF} ferry` : ''})`;
   document.getElementById('stamp').textContent = new Date(meta.generatedAt).toLocaleDateString('en-GB');
   // The pipeline key keeps a disambiguating prefix — route merging, colour
   // lookup and selection all match on it — while everything the panel and the
@@ -251,7 +255,7 @@ async function init() {
   // agency names; the three Berlin operators lead, the rest follow by size.
   const OP_TITLE = new Map(Object.entries(meta.ops || {}));
   const OP_FIRST = ['bvg', 'sbahn', 'vip'];
-  const CATS = [['bus', 'Buses'], ['tram', 'Trams'], ['metro', 'Trains']];
+  const CATS = [['bus', 'Buses'], ['tram', 'Trams'], ['metro', 'Trains'], ['ferry', 'Ferries']];
   const catOf = (l) => (l.metro ? 'metro' : l.mode);
   const paintChips = (linesView) => {
     const active = (l) => l.line === state.selected && l.mode === state.selMode;
@@ -285,7 +289,7 @@ async function init() {
   // are drawn from one pool here, so a name alone could be ambiguous across
   // modes — the feed keeps them apart itself (the Zgierz bus is "6.", tram 6
   // is "6"), and the pair carries the guarantee anyway.
-  const state = { bus: true, tram: true, metro: true, mline: !!document.getElementById('toggle-mline'), selected: null, selMode: null, journey: null, view: 'corridors', bg: 'auto' };
+  const state = { bus: true, tram: true, metro: true, ferry: true, mline: !!document.getElementById('toggle-mline'), selected: null, selMode: null, journey: null, view: 'corridors', bg: 'auto' };
   paintChips(false);
 
   // Line layers go below the base style labels (street names stay readable).
@@ -300,6 +304,31 @@ async function init() {
   // true OSM positions). Metro is the exception: a WIDE translucent ribbon with
   // no white casing, laid over the street network like on printed transit maps.
   const metroC = ['==', ['get', 'metro'], 1];
+  // The ferries ride the WATER: their courses (mode 'ferry', routed through the
+  // rivers and lakes by pipeline/ferries.mjs) draw as a dashed purple line on a
+  // white casing — a boat's track on a chart, never to be read as a road.
+  // Added BEFORE the street casing, so a bridge draws over the water track.
+  // MapLibre cannot dash per feature, hence the own layers; route-casing and
+  // route-line leave the ferry runs out (see applyFilters).
+  map.addLayer({
+    id: 'route-ferry-casing', type: 'line', source: 'streets',
+    filter: ['==', ['get', 'mode'], 'ferry'],
+    layout: { 'line-join': 'round', 'line-cap': 'round' },
+    paint: {
+      'line-color': '#ffffff',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 10, 2.4, 14, 4.8, 17, 9],
+    },
+  }, firstSymbol);
+  map.addLayer({
+    id: 'route-ferry', type: 'line', source: 'streets',
+    filter: ['==', ['get', 'mode'], 'ferry'],
+    layout: { 'line-join': 'round', 'line-cap': 'butt' },
+    paint: {
+      'line-color': ['coalesce', ['get', 'color'], FERRY_PURPLE],
+      'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.3, 14, 2.6, 17, 5],
+      'line-dasharray': [2.4, 1.6],
+    },
+  }, firstSymbol);
   map.addLayer({
     id: 'route-casing', type: 'line', source: 'streets',
     layout: { 'line-join': 'round', 'line-cap': 'round' },
@@ -569,7 +598,7 @@ async function init() {
   // pole's side of the street (angle from the pipeline). Canvas-drawn icon per
   // color pair — regular: white fill + colored rim; terminus: filled + dark rim.
   const PALETTE = [
-    [KMK, KMK_DARK], [TROLLEY_GREEN, '#0a5121'], [MLINE_YELLOW, '#7d5600'],
+    [KMK, KMK_DARK], [TROLLEY_GREEN, '#0a5121'], [MLINE_YELLOW, '#7d5600'], [FERRY_PURPLE, FERRY_DARK],
     ['#d6212b', '#7c1116'],
     // the official TfL line colours (uppercase — exactly as the pipeline emits
     // them). The styleimagemissing fallback below covers anything missed, but a
@@ -676,9 +705,10 @@ async function init() {
     minzoom: 11,
     layout: {
       // metro stations and TERMINI are ALWAYS full discs; ordinary street stops
-      // are half-discs with the bulge on the pole's side of the roadway
+      // are half-discs with the bulge on the pole's side of the roadway; a ferry
+      // landing stage too is a full disc — the water has no kerb side to show
       'icon-image': ['concat',
-        ['case', ['any', ['==', ['get', 'metro'], 1], ['==', ['get', 'terminus'], 1]], 'dot-', 'stop-'],
+        ['case', ['any', ['==', ['get', 'metro'], 1], ['==', ['get', 'terminus'], 1], ['==', ['get', 'mode'], 'ferry']], 'dot-', 'stop-'],
         ['coalesce', ['get', 'color'], KMK],
         ['case', ['==', ['get', 'terminus'], 1], '-t', '']],
       'icon-size': ['interpolate', ['linear'], ['zoom'], 11, 0.34, 14, 0.62, 17, 1.05],
@@ -1006,7 +1036,7 @@ async function init() {
   const busOnlyNumbersN = ['case', ['has', 'bl0'], sectionRow('b'), busOnlyNumbers];
   const tramOnlyNumbersN = ['case', ['has', 'tl0'], sectionRow('t'), tramOnlyNumbers];
   function applyFilters() {
-    const modes = [state.bus ? 'bus' : null, state.tram ? 'tram' : null].filter(Boolean);
+    const modes = [state.bus ? 'bus' : null, state.tram ? 'tram' : null, state.ferry ? 'ferry' : null].filter(Boolean);
     const modeC = ['in', ['get', 'mode'], ['literal', modes]];
     // an active journey hides the WHOLE regular network (user request: the
     // line's return run and the rest of its route were noise) — the ride is
@@ -1023,26 +1053,28 @@ async function init() {
     const railModeC = ['any',
       state.tram ? ['all', ['==', ['get', 'mode'], 'tram'], ['!', ['has', 'metro']]] : false,
       state.metro ? ['all', ['==', ['get', 'mode'], 'tram'], ['==', ['get', 'metro'], 1]] : false];
+    // the ferries are a mode of their own with a toggle of their own
+    const ferryC = state.ferry ? ['==', ['get', 'mode'], 'ferry'] : false;
     const busRunC = ['any',
       B ? ['!', ['has', 'mline']] : false,
       M ? ['==', ['get', 'mline'], 'all'] : false,
       (B || M) ? ['==', ['get', 'mline'], 'mix'] : false];
     const runModeC = ['any',
       ['all', ['==', ['get', 'mode'], 'bus'], busRunC],
-      railModeC];
+      railModeC, ferryC];
     const stopSubC = ['any',
       B ? ['!', ['has', 'mstop']] : false,
       M ? ['==', ['get', 'mstop'], 'all'] : false,
       (B || M) ? ['==', ['get', 'mstop'], 'mix'] : false];
     const stopModeC = ['any',
       ['all', ['==', ['get', 'mode'], 'bus'], stopSubC],
-      railModeC];
+      railModeC, ferryC];
     const boxSubC = ['any',
       B ? ['!=', ['get', 'color'], MLINE_YELLOW] : false,
       M ? ['==', ['get', 'color'], MLINE_YELLOW] : false];
     const boxModeC = ['any',
       ['all', ['==', ['get', 'mode'], 'bus'], boxSubC],
-      railModeC];
+      railModeC, ferryC];
     const busLblC = ['any',
       B ? ['!=', ['get', 'color'], MLINE_YELLOW] : false,
       M ? ['any', ['==', ['get', 'color'], MLINE_YELLOW], ['has', 'mLines']] : false];
@@ -1051,8 +1083,12 @@ async function init() {
     map.setPaintProperty('route-line', 'line-color', M && !B
       ? ['case', ['==', ['get', 'mline'], 'mix'], MLINE_YELLOW, ['coalesce', ['get', 'color'], KMK]]
       : ['coalesce', ['get', 'color'], KMK]);
-    map.setFilter('route-casing', ['all', runModeC, selC]);
-    map.setFilter('route-line', ['all', runModeC, selC]);
+    // the ferry courses have their own casing and dashed stroke, under the bridges
+    const notFerry = ['!=', ['get', 'mode'], 'ferry'];
+    map.setFilter('route-casing', ['all', runModeC, notFerry, selC]);
+    map.setFilter('route-line', ['all', runModeC, notFerry, selC]);
+    map.setFilter('route-ferry-casing', ['all', ferryC, selC]);
+    map.setFilter('route-ferry', ['all', ferryC, selC]);
     map.setFilter('route-trolley-dash', ['all', ['==', ['get', 'trolley'], 'mix'], runModeC, selC]);
     map.setFilter('route-mline-dash', M && B
       ? ['all', ['==', ['get', 'mline'], 'mix'], selC]
@@ -1076,6 +1112,7 @@ async function init() {
     const nameModeC = ['any',
       state.tram ? ['in', 'tram', ['get', 'modes']] : false,
       state.metro ? ['in', 'metro', ['get', 'modes']] : false,
+      state.ferry ? ['in', 'ferry', ['get', 'modes']] : false,
       ['all', ['in', 'bus', ['get', 'modes']], ['any',
         B ? ['!', ['has', 'msome']] : false,
         M ? ['==', ['get', 'mall'], 1] : false,
@@ -1088,7 +1125,7 @@ async function init() {
     let numC, numField;
     const lblModeC = ['any',
       ['all', ['==', ['get', 'mode'], 'bus'], busLblC],
-      railModeC];
+      railModeC, ferryC];
     if ((B || M) && !state.tram) {
       // trams hidden: shared corridor labels (mode=tram with busLines) must
       // stay, but they show only the bus part; metro rows (metro:1, never
@@ -1096,7 +1133,8 @@ async function init() {
       numC = ['all', ['any',
         ['all', ['==', ['get', 'mode'], 'bus'], busLblC],
         ['has', 'busLines'],
-        state.metro ? ['all', ['==', ['get', 'mode'], 'tram'], ['==', ['get', 'metro'], 1]] : false], selC];
+        state.metro ? ['all', ['==', ['get', 'mode'], 'tram'], ['==', ['get', 'metro'], 1]] : false,
+        ferryC], selC];
       numField = busOnlyNumbersN;
     } else {
       numC = ['all', lblModeC, selC];
@@ -1144,13 +1182,13 @@ async function init() {
   // Everything either view needs is already in the style; switching is paint and
   // visibility, never a reload — so the position, the zoom, the picked line and
   // the label-size settings all survive it.
-  const CORRIDOR_ONLY = ['route-casing', 'route-line', 'route-trolley-dash', 'route-mline-dash'];
+  const CORRIDOR_ONLY = ['route-ferry-casing', 'route-ferry', 'route-casing', 'route-line', 'route-trolley-dash', 'route-mline-dash'];
   const LINES_ONLY = ['corridor-casing', 'corridor-line', 'strand-casing', 'strand-line'];
   // the stop discs as this map paints them in the corridor view — restored
   // verbatim when the reader comes back from the lines view
   const STOPS_ICON_CORRIDORS = map.getLayoutProperty('stops-dots', 'icon-image');
   const STOPS_ICON_LINES = ['concat',
-    ['case', ['any', ['==', ['get', 'metro'], 1], ['==', ['get', 'terminus'], 1]], 'dot-', 'stop-'],
+    ['case', ['any', ['==', ['get', 'metro'], 1], ['==', ['get', 'terminus'], 1], ['==', ['get', 'mode'], 'ferry']], 'dot-', 'stop-'],
     STOP_INK,
     ['case', ['==', ['get', 'terminus'], 1], '-t', '']];
   function applyView() {
@@ -1218,7 +1256,7 @@ async function init() {
   });
   // null-safe: this region's panel only carries the bus toggle (no metro or
   // metroline categories here)
-  for (const [id, key] of [['toggle-bus', 'bus'], ['toggle-tram', 'tram'], ['toggle-metro', 'metro'], ['toggle-mline', 'mline']]) {
+  for (const [id, key] of [['toggle-bus', 'bus'], ['toggle-tram', 'tram'], ['toggle-metro', 'metro'], ['toggle-ferry', 'ferry'], ['toggle-mline', 'mline']]) {
     const el = document.getElementById(id);
     if (el) el.addEventListener('change', (e) => { state[key] = e.target.checked; applyFilters(); });
   }

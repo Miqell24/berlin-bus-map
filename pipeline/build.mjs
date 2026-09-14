@@ -5,8 +5,10 @@
 // operators' buses navy, the trams family red, and on the fixed-track side
 // the U-Bahn and the S-Bahn in the colours the feed itself ships (VBB is one
 // of the few here that fills route_color), both drawn with the trunk
-// treatment — wide ribbon, station discs, always-on names.
-// Usage: node pipeline/build.mjs [--all | lines...] [--tram all|M4,U6,S41]
+// treatment — wide ribbon, station discs, always-on names. The ferries F10–F39
+// ride a mode of their own, 'ferry', whose "streets" are the water: synthetic
+// route=ferry ways routed through the rivers and lakes by pipeline/ferries.mjs.
+// Usage: node pipeline/build.mjs [--all | lines...] [--tram all|M4,U6,S41,F10]
 // Results land in shared files with properties.color/mode, so the frontend styles
 // them data-driven.
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs';
@@ -37,6 +39,12 @@ const SIDE_CORRIDOR = 6;
 
 const TROLLEY_GREEN = '#149a3f';
 const TROLLEY_DARK = '#0a5121';
+// the ferries: ferry purple, dashed by the frontend — water, not road, and
+// never to be read as the navy bus stroke or a U-Bahn colour
+const FERRY_PURPLE = '#7b2ca8';
+const FERRY_DARK = '#4a1668';
+// the water network the ferry mode rides — written by pipeline/ferries.mjs
+const FERRY_OSM = join(ROOT, 'data/osm/berlin-ferry.json');
 // the Metrobús BRT corridors — amber, apart from the navy street buses; they
 // ride the props the GZM metrolines used (mline/mstop/mall/msome), as Rio's BRT
 // and Cairo's paratransit do
@@ -123,13 +131,15 @@ if (ti >= 0) {
 }
 const busAll = busArgs.includes('--all');
 const busList = busArgs.filter((a) => a !== '--all');
-// --tram feeds four rail cfgs here, told apart by the name itself: U… is the
-// U-Bahn, S… the S-Bahn, RB/RE/FEX the regional trains, everything else
-// (M1–M17, 12–99, and the 1–6 of the three Brandenburg town networks) a tram
+// --tram feeds four rail cfgs and the ferries here, told apart by the name
+// itself: U… is the U-Bahn, S… the S-Bahn, RB/RE/FEX the regional trains, F…
+// a ferry, everything else (M1–M17, 12–99, and the 1–6 of the three
+// Brandenburg town networks) a tram
 const uSel = tramLines.filter((l) => /^U\d/.test(l));
 const sSel = tramLines.filter((l) => /^S\d/.test(l));
 const rSel = tramLines.filter((l) => /^(RB|RE|FEX)/.test(l));
-const tramSel = tramLines.filter((l) => l !== 'all' && !/^[US]\d/.test(l) && !/^(RB|RE|FEX)/.test(l));
+const fSel = tramLines.filter((l) => /^F\d/.test(l));
+const tramSel = tramLines.filter((l) => l !== 'all' && !/^[USF]\d/.test(l) && !/^(RB|RE|FEX)/.test(l));
 
 // ONE feed for the whole Verbund, FIVE cfgs.
 //
@@ -145,8 +155,8 @@ const tramSel = tramLines.filter((l) => l !== 'all' && !/^[US]\d/.test(l) && !/^
 // Route types are the extended German set — 700 and 3 both mean "bus" here,
 // 900 tram, 400 U-Bahn, 109 S-Bahn, 100 and 106 the RB/RE regional trains.
 //
-// Cut deliberately: the ferries (1000 — BVG's F10–F39 and Strausberg's F39;
-// the engine has no water graph).
+// The ferries (1000 — BVG's F10–F24 and Strausberg's F39) have been a sixth
+// cfg since 14.09.2026, drawn on the water (see the ferry cfg below).
 //
 // LINE KEYS: Verbund-wide the numbers are NOT unique — 197 of them are used
 // by two operators or more (Oder-Spree and the Uckermark both number their
@@ -166,7 +176,7 @@ if (!existsSync(SCOPE_FILE)) {
 const SCOPE = JSON.parse(readFileSync(SCOPE_FILE, 'utf8'));
 const S_BUS = new Set(SCOPE.bus), S_TRAM = new Set(SCOPE.tram),
   S_UBAHN = new Set(SCOPE.ubahn), S_SBAHN = new Set(SCOPE.sbahn),
-  S_RAIL = new Set(SCOPE.rail);
+  S_RAIL = new Set(SCOPE.rail), S_FERRY = new Set(SCOPE.ferry || []);
 const KEY = SCOPE.key || {}, OP = SCOPE.op || {};
 
 // The U-Bahn, S-Bahn and regional colours come from the feed itself (VBB is
@@ -343,6 +353,26 @@ if (tramAll || rSel.length) MODES.push({
       lineColor: (k) => BER_COLORS[k] || RAIL_GREY, nameFix: deBerlin },
   ],
 });
+// The ferries (14.09.2026). Their graph is the water: the courses
+// pipeline/ferries.mjs routed through the rivers and lakes — a straight
+// crossing where the water allows one, a routed and smoothed course where it
+// does not — one synthetic route=ferry way per stretch of named water. The
+// feed's shapes are ignored (straight chords over the land), so the stop
+// sequence is the observation and the HMM follows the courses; every stop
+// stands at its BERTH, the landing stage the courses start and end at.
+if ((tramAll || fSel.length) && S_FERRY.size) {
+  if (!existsSync(FERRY_OSM)) console.error(`WARNING: ${FERRY_OSM} missing — run \`node pipeline/ferries.mjs\` first; the ferries are skipped`);
+  else MODES.push({
+    mode: 'ferry', label: 'ferries', osmFile: 'data/osm/berlin-ferry.json',
+    graphMode: 'ferry', color: FERRY_PURPLE, colorDark: FERRY_DARK,
+    all: tramAll, lines: tramAll ? [] : fSel,
+    feeds: [
+      { tag: 'vbb', dir: 'data/gtfs', routeTypes: ['1000'], ignoreShapes: true,
+        skipRoute: (r) => !S_FERRY.has(r.route_id), mapKey: lineKey, nameFix: deBerlin,
+        stopAt: JSON.parse(readFileSync(FERRY_OSM, 'utf8')).berths || {} },
+    ],
+  });
+}
 
 // Feed coordinate fixes: poles the GTFS places on the wrong street, keyed by
 // `<feed tag>:<stop_id>` with the coordinates of that stop's node in OSM. A
@@ -555,8 +585,9 @@ async function processMode(cfg) {
   for (const feed of cfg.feeds) {
     const fdir = join(ROOT, feed.dir);
     const shapesFile = join(fdir, 'shapes.txt');
-    // guard inherited from sibling cities: a header-only shapes.txt counts as absent
-    const hasShapes = existsSync(shapesFile) && statSync(shapesFile).size > 200;
+    // guard inherited from sibling cities: a header-only shapes.txt counts as absent;
+    // ignoreShapes: the feed's trace is not to be trusted for this mode (the ferries)
+    const hasShapes = !feed.ignoreShapes && existsSync(shapesFile) && statSync(shapesFile).size > 200;
     // more trips sampled when stop sequences ARE the geometry: the longest run
     // must win over short-turn variants
     const tripCap = hasShapes ? 40 : 200;
@@ -784,7 +815,7 @@ async function processMode(cfg) {
       // Głowackiego" where ZTM writes "Radzymin Głowackiego"
       if (feed.nameFix) name = feed.nameFix(name);
       name = NAME_FIX[name] || name;
-      const fix = STOP_FIX[feed.tag + ':' + s.stop_id];
+      const fix = STOP_FIX[feed.tag + ':' + s.stop_id] || (feed.stopAt && feed.stopAt[s.stop_id]);
       stopsById.set(feed.tag + ':' + s.stop_id, {
         name,
         lat: fix ? fix[0] : Number(s.stop_lat),
@@ -959,6 +990,13 @@ async function processMode(cfg) {
     }
     const res = matchShape(graph, sampled, opts);
     if (!res) { log(`SKIPPED ${r.line}/${r.dir}: matching failed`); continue; }
+    // A ferry has no business off its water courses: a raw fallback stretch or
+    // a broken chain would be a straight chord drawn over the land, the one
+    // thing the water routing exists to prevent. Such a rep is dropped, loudly.
+    if (cfg.mode === 'ferry' && (res.rawStretches.length || res.stats.viterbiBreaks)) {
+      log(`SKIPPED ${r.line}/${r.dir}: the match left the water courses (raw=${res.rawStretches.length}, breaks=${res.stats.viterbiBreaks}) — rerun pipeline/ferries.mjs`);
+      continue;
+    }
     // the drawn line must reach the stops it serves: truncated source shapes and
     // dropped pseudo observations otherwise leave the terminus disc, its name and
     // the line badges hanging off the end of the route

@@ -55,6 +55,20 @@ if [ ! -f data/osm/tiles/t25.json ] || [ ! -f data/osm/berlin-rail.json ]; then
   python3 pipeline/pbf-tiles.py
 fi
 
+# 2b) the WATER the ferries ride (F10–F24, F39): rivers, lakes and piers around
+#     every ferry line in data/scope.json (ferryBox), cut from the same two
+#     extracts — the Havel and Spree multipolygons are more than the Overpass
+#     mirrors will serve (504). pipeline/ferries.mjs turns it into
+#     data/osm/berlin-ferry.json, the water courses the ferry mode matches on.
+if [ ! -f data/osm/berlin-water.json ]; then
+  need_osmium
+  echo "== cutting the ferries' water out of the extracts =="
+  python3 pipeline/water-cut.py
+fi
+if [ ! -f data/osm/berlin-ferry.json ]; then
+  node pipeline/ferries.mjs
+fi
+
 # 3) MapLibre GL (vendored, no CDN at runtime)
 if [ ! -f web/vendor/maplibre-gl.js ]; then
   echo "== MapLibre GL =="

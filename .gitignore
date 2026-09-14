@@ -5,3 +5,4 @@ data/osm/
 data/*.zip
 data/*.pbf
 data/out/
+data/ferries-*

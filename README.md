@@ -7,8 +7,9 @@ Lausitz, from the Uckermark to the Elbe-Elster — the tram towns of Potsdam,
 Cottbus, Frankfurt (Oder), Brandenburg an der Havel, Woltersdorf, Schöneiche
 and Strausberg, and the RB/RE regional trains that tie them together —
 **1 123 lines / 23 555 stops / 56 901 km**, drawn along the real street and
-track geometry, weighted mean matching error 1.94 m. The largest network in
-this family of maps.
+track geometry, weighted mean matching error 1.94 m — and, since 14.09.2026,
+the seven ferries on the water they cross. The largest network in this family
+of maps.
 
 ## Live
 
@@ -28,11 +29,10 @@ distance; it decides the modes, the Ersatzverkehr and the line keys:
 | U-Bahn | 400 | U1–U9, colours from the feed | `railway=subway` |
 | S-Bahn | 109 | the ring and its spokes, colours from the feed; the two foreign S-Bahn lines in the feed — DB Regio's Mittelelbe S1 (Wittenberge–Stendal–Schönebeck) and Mitteldeutschland S4 (Leipzig–Oschatz) — ship no colour and take the Verbund grey, not tram red | `railway=rail` + `light_rail` |
 | regional trains | 100 + 106 | every RB/RE and the FEX, colours from the feed, Verbund grey where it ships none | `railway=rail` |
+| ferries | 1000 | BVG's F10, F11, F12, F21, F23, F24 and Strausberg's F39, dashed purple | water courses from `pipeline/ferries.mjs` |
 
 Cut deliberately:
 
-* **the ferries** (1000) — BVG's F10–F39 and Strausberg's F39; the engine has
-  no water graph;
 * **the Ersatzverkehr.** An operator numbers its rail-replacement buses after
   the line they replace, so the feed carries "buses" called U6, S7, M1 and
   RE2. The discriminator is per OPERATOR, not per name: a bus is a replacement
@@ -67,6 +67,52 @@ are lines the feed itself publishes as road services — long-term replacements
 for track closures whose rail counterpart is not in the feed at all — so what
 is on the map is what actually runs.
 
+## The ferries (14.09.2026)
+
+Seven ferry lines cross the Verbund's water — F10 Wannsee–Kladow over the Havel,
+F11 Baumschulenweg–Wilhelmstrand over the Spree, F12 over the Langer See, F21
+to Krampenburg in the Große Krampe, F23 along the Müggelspree to the Müggelsee,
+the rowing ferry F24 at Rahnsdorf and the Straussee ferry F39 — and nothing in the inputs draws
+them: the road graph ends at the landing stages, and VBB's shapes are chords
+straight over the land. `pipeline/ferries.mjs` makes the water itself the
+network, with the method Copenhagen's harbour buses use:
+
+1. **Water.** `pipeline/water-cut.py` cuts the rivers, lakes (`natural=water`,
+   `waterway=riverbank`) and piers around every ferry line out of the
+   `berlin` and `brandenburg` extracts — a water relation whole, every member,
+   so its rings close. Overpass answered 504 on every mirror.
+2. **Areas.** The lines lie up to 50 km apart, so the stops are grouped by the
+   lines joining them and every group gets a 4 m occupancy grid of its own
+   (its stops plus 1.5 km): six grids, F23 and F24 sharing Kruggasse. Water
+   polygons are scan-filled, piers cut back out as land — a pier outline
+   whole, a landing stage drawn as a line one cell wide.
+3. **Berths.** A stop stands on land, never out on the water: its berth is the
+   pier cell nearest to the feed's coordinate, or the bank two cells (≈ 6 m)
+   behind the water's edge, on a water body of 2 ha or more (never a garden
+   pond). Ten of the fifteen stops land on their pier within 3 m.
+4. **Straight crossings.** Most of these ferries go from one bank to the other.
+   Where the straight line between two berths stays on the water, clear of the
+   banks by 0.3 m per metre out of each berth (up to 15 m), that line is the
+   crossing: F11, F12, F24, F39.
+5. **Routed courses.** A leg that would cross land (F10 through the Großer
+   Wannsee, F21 round Krampenburg, F23 along the Müggelspree) is routed: A*
+   through water at least 6 m from the banks, pulled to mid-channel, simplified,
+   relaxed by a bending (bi-Laplacian) flow, then docked — each call vertex
+   carried onto its berth, the course following over up to 90 m either side —
+   and bent smooth again with the calls pinned.
+6. **Proof.** Every course is sampled every metre against the mask; only the
+   14 m out of each berth may be land. A land sample anywhere else stops the
+   script before anything is written.
+7. **Output.** One synthetic `route=ferry` way per stretch of named water goes
+   to `data/osm/berlin-ferry.json`, with the berth of every stop. The build's
+   `ferry` mode puts each stop at its berth and matches the stop sequences on
+   that graph; a match that would leave the water (a raw stretch or a Viterbi
+   break) is dropped rather than drawn.
+
+The frontend draws the courses dashed purple on a white casing, under the street
+casing so the bridges pass over them; the landing stages are full discs, and
+the mode has its own toggle and its own "Ferries" heading in the line list.
+
 ## Pipeline
 
 `npm run download` fetches the VBB feed, computes the scope, and cuts the OSM
@@ -83,8 +129,10 @@ the lines that leave the Land, and the Polish `dolnoslaskie`, `lubuskie` and
 Wrocław. It writes exactly the JSON shape Overpass would have returned, node
 ids included.
 
-`npm run build` map-matches every line (HMM/Viterbi on the OSM graphs) and
-writes GeoJSON to `data/out/`; `npm run lines` adds the line-by-line view.
+`npm run download` also cuts the ferries' water and runs `pipeline/ferries.mjs`
+(see above). `npm run build` map-matches every line (HMM/Viterbi on the OSM
+graphs) and writes GeoJSON to `data/out/`; `npm run lines` adds the
+line-by-line view.
 
 **Two repairs after matching (10.09.2026, user report: stubs and lines through
 buildings).** *Out-and-back stubs* — `trimSpurs`, the family's trim (Belgrade,

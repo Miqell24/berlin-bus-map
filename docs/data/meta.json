@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T13:27:34.206Z",
+  "generatedAt": "2026-09-14T12:41:20.149Z",
   "bbox": [
     10.788661,
     50.839241,
@@ -53,6 +53,11 @@
       "mode": "tram",
       "label": "regional rail",
       "color": "#d6212b"
+    },
+    {
+      "mode": "ferry",
+      "label": "ferries",
+      "color": "#7b2ca8"
     }
   ],
   "ops": {
@@ -56629,6 +56634,370 @@
         }
       ],
       "op": "db"
+    },
+    {
+      "line": "F10",
+      "mode": "ferry",
+      "color": "#7b2ca8",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Alt-Kladow",
+          "variants": 1,
+          "tripCount": 14,
+          "stops": 2,
+          "lengthKm": 3.89,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "S Wannsee Bhf",
+          "variants": 1,
+          "tripCount": 14,
+          "stops": 2,
+          "lengthKm": 3.89,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "op": "bvg"
+    },
+    {
+      "line": "F11",
+      "mode": "ferry",
+      "color": "#7b2ca8",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Baumschulenstr./Fähre",
+          "variants": 1,
+          "tripCount": 55,
+          "stops": 2,
+          "lengthKm": 0.18,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0.4297198788684532,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Wilhelmstrand",
+          "variants": 1,
+          "tripCount": 64,
+          "stops": 2,
+          "lengthKm": 0.18,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "op": "bvg"
+    },
+    {
+      "line": "F12",
+      "mode": "ferry",
+      "color": "#7b2ca8",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Wassersportallee",
+          "variants": 1,
+          "tripCount": 111,
+          "stops": 2,
+          "lengthKm": 0.26,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0.694813409816363,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Müggelbergallee",
+          "variants": 1,
+          "tripCount": 113,
+          "stops": 2,
+          "lengthKm": 0.26,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "op": "bvg"
+    },
+    {
+      "line": "F21",
+      "mode": "ferry",
+      "color": "#7b2ca8",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Zum Seeblick",
+          "variants": 1,
+          "tripCount": 19,
+          "stops": 2,
+          "lengthKm": 0.91,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Krampenburg",
+          "variants": 1,
+          "tripCount": 19,
+          "stops": 2,
+          "lengthKm": 0.91,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "op": "bvg"
+    },
+    {
+      "line": "F23",
+      "mode": "ferry",
+      "color": "#7b2ca8",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Kruggasse",
+          "variants": 1,
+          "tripCount": 10,
+          "stops": 4,
+          "lengthKm": 1.66,
+          "stats": {
+            "observations": 4,
+            "matched": 4,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Müggelwerderweg",
+          "variants": 1,
+          "tripCount": 10,
+          "stops": 4,
+          "lengthKm": 1.66,
+          "stats": {
+            "observations": 4,
+            "matched": 4,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "op": "bvg"
+    },
+    {
+      "line": "F24",
+      "mode": "ferry",
+      "color": "#7b2ca8",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Kruggasse",
+          "variants": 1,
+          "tripCount": 9,
+          "stops": 2,
+          "lengthKm": 0.03,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Spreewiesen",
+          "variants": 1,
+          "tripCount": 9,
+          "stops": 2,
+          "lengthKm": 0.03,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0.3335852406480626,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "op": "bvg"
+    },
+    {
+      "line": "F39",
+      "mode": "ferry",
+      "color": "#7b2ca8",
+      "dirs": [
+        {
+          "dir": "0",
+          "headsign": "Strausberg, Waldseite",
+          "variants": 1,
+          "tripCount": 17,
+          "stops": 2,
+          "lengthKm": 0.38,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        },
+        {
+          "dir": "1",
+          "headsign": "Strausberg, Stadtseite",
+          "variants": 1,
+          "tripCount": 17,
+          "stops": 2,
+          "lengthKm": 0.38,
+          "stats": {
+            "observations": 2,
+            "matched": 2,
+            "noCandidates": 0,
+            "viterbiBreaks": 0,
+            "bridged": 0,
+            "rawStretchCount": 0,
+            "chordRescues": 0,
+            "rawMeters": 0,
+            "meanError": 0,
+            "roundaboutSegs": 0,
+            "extStart": 0,
+            "extEnd": 0
+          }
+        }
+      ],
+      "op": "sre"
     },
     {
       "line": "brb:N1",

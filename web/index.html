@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Berlin Public Transport — interactive map</title>
 <link rel="stylesheet" href="vendor/maplibre-gl.css">
-<link rel="stylesheet" href="style.css?v=20260826c">
+<link rel="stylesheet" href="style.css?v=20260914a">
 </head>
 <body>
 <div id="map"></div>
@@ -132,6 +132,8 @@
     <li class="sublegend corridor-only">U-Bahn in the BVG colours the feed itself ships: <span class="mini" style="background:#7DAD4C"></span>U1 <span class="mini" style="background:#DA421E"></span>U2 <span class="mini" style="background:#16683D"></span>U3 <span class="mini" style="background:#F0D722"></span>U4 <span class="mini" style="background:#7E5330"></span>U5 <span class="mini" style="background:#8C6DAB"></span>U6 <span class="mini" style="background:#009BD5"></span>U7 <span class="mini" style="background:#224F86"></span>U8 <span class="mini" style="background:#F3791D"></span>U9</li>
     <li class="sublegend corridor-only">S-Bahn: <span class="mini" style="background:#DA6BA2"></span>S1/S15 <span class="mini" style="background:#007734"></span>S2/S25/S26 <span class="mini" style="background:#0066AD"></span>S3 <span class="mini" style="background:#EB7405"></span>S5 <span class="mini" style="background:#816DA6"></span>S7/S75 <span class="mini" style="background:#66AA22"></span>S8/S85 <span class="mini" style="background:#992746"></span>S9 <span class="mini" style="background:#AD5937"></span>S41 <span class="mini" style="background:#CB6418"></span>S42 <span class="mini" style="background:#CD9C53"></span>S46/S47</li>
     <li class="sublegend corridor-only">The RB/RE lines that make the Verbund one network, in the colours VBB gives them (the ones it leaves unpainted take the Verbund grey). They are drawn to their real ends, which is why the map reaches Stralsund, Schwerin, Magdeburg, Leipzig, Dresden, G&ouml;rlitz, Szczecin, Zielona G&oacute;ra and Wroc&#322;aw.</li>
+    <li><label><input type="checkbox" id="toggle-ferry" checked> <span class="sw line corridor-only ferry"></span> Ferries</label></li>
+    <li class="sublegend corridor-only">BVG&rsquo;s F10 Wannsee&ndash;Kladow, F11, F12, F21, F23 and F24 and the Strausberg F39, drawn on the water they cross, from landing stage to landing stage.</li>
     <li><span class="sw stop"></span> Stop</li>
     <li><span class="sw terminus"></span> Terminus</li>
   </ul>
@@ -173,7 +175,7 @@
   <label class="debug"><input type="checkbox" id="toggle-shape"> show raw GTFS shapes (QA)</label>
 </aside>
 <script src="vendor/maplibre-gl.js"></script>
-<script src="app.js?v=20260911n"></script>
+<script src="app.js?v=20260914a"></script>
 <script src="pdf-export.js?v=20260911a"></script>
 <script>
 (() => {
