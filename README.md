@@ -175,3 +175,7 @@ across the Spree is the ramp onto Invalidenstraße.
 
 Data: VBB — the whole Verkehrsverbund Berlin-Brandenburg ·
 base map © OpenFreeMap / OpenMapTiles / OpenStreetMap contributors.
+
+## 17.09.2026 — requested fixes
+
+- **MetroBus and MetroTram first.** M lines open the bus and tram lists (`firstRank` in `numSort`). Applied to the finished build with `transit-maps/tools/lists.mjs`.

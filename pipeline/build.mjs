@@ -71,7 +71,11 @@ const cmpParts = (a, b) => {
 // trams 1-5 but only 1-4 collide Verbund-wide, so the keys read `5`, `ffo:1`,
 // `ffo:2`… and every row there came out "5, 2" or "5, 1, 3, 4". Same for the
 // S-Bahn — `sbahn:S1` sorted behind S2 — and for `hanse:RB33` behind RB34.
-const numSort = (a, b) => cmpParts(bare(a), bare(b)) || cmpParts(a, b);
+// MetroBus and MetroTram (M1 … M85) open every list, ahead of the rest of
+// their mode (user 17.09.2026: "linie tram i bus M sortowane na początku
+// listy") — Romania prints its M lines LAST, those are metropolitan lines.
+const firstRank = (k) => (/^M\d+$/.test(bare(k)) ? 0 : 1);
+const numSort = (a, b) => firstRank(a) - firstRank(b) || cmpParts(bare(a), bare(b)) || cmpParts(a, b);
 function round6(v) { return Math.round(v * 1e6) / 1e6; }
 // dark variant for feed-supplied line colors (badge rims / terminus fills)
 function darken(hex, f) {
